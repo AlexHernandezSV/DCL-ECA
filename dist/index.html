@@ -105,6 +105,7 @@
       .story-step:nth-of-type(4) .step-photo { transform: rotate(3deg); }
       .story-step:nth-of-type(5) .step-photo { transform: rotate(-3deg); }
       .step-photo img { display: block; width: 100%; height: 17rem; object-fit: cover; }
+      .step-photo--route img { height: 23rem; object-position: 50% 18%; }
       .step-photo figcaption { position: absolute; right: .8rem; bottom: .55rem; left: .8rem; color: var(--navy); font-family: "Segoe Print", "Bradley Hand", cursive; font-size: .82rem; font-weight: 700; }
       .travel-finish { position: relative; margin: 1rem 0 0; padding: .6rem 0 0; }
       .travel-line { display: block; width: 100%; height: 7rem; overflow: visible; }
@@ -201,6 +202,7 @@
         .story-step:nth-of-type(even) .step-copy, .story-step:nth-of-type(even) .step-photo { order: initial; }
         .step-copy { grid-column: 2; grid-row: 1; padding: 0; }
         .step-photo { grid-column: 2; grid-row: 2; width: min(100%, 21rem); margin-top: .6rem; }
+        .step-photo--route img { height: 27rem; object-position: 50% 12%; }
         .step-copy h3 { font-size: clamp(2.2rem, 11vw, 3.5rem); }
         .ribbon-section { padding: 3.6rem 0 4rem; }
         .ribbon-inner { width: min(100% - 1.4rem, 620px); }
@@ -251,7 +253,7 @@
           <article class="story-step reveal"><div class="step-copy"><span class="step-number">01</span><h3>Te vi en los pasillos.</h3><p>Muy seria, muy enojada y, sobre todo, <strong>radiante</strong>. Yo todavía no sabía tu nombre, pero ya sabía que había algo en ti que quería volver a mirar.</p><span class="hand-note">la primera escena que guardé</span></div><figure class="step-photo"><img src="moments/01-oficina.jpg" alt="Ella en un día de oficina" loading="lazy"><figcaption>antes de conocerte</figcaption></figure></article>
           <article class="story-step reveal"><div class="step-copy"><span class="step-number">02</span><h3>La excusa fue una capacitación.</h3><p>La vida nos sentó cerca y por fin pude hablar contigo. Lo que era una imagen desde lejos se convirtió en una conversación que quería alargar.</p><span class="hand-note">aquí empezó el “¿y si…?”</span></div><figure class="step-photo"><img src="moments/02-capacitacion.jpg" alt="La pareja compartiendo una salida" loading="lazy"><figcaption>la conversación</figcaption></figure></article>
           <article class="story-step reveal"><div class="step-copy"><span class="step-number">03</span><h3>Después te invité a correr.</h3><p>Entre pasos, respiraciones y charlas, empezamos a conocernos de verdad. Nuestro primer kilómetro juntos no fue perfecto: fue mejor, porque fue nuestro.</p><span class="hand-note">spoiler: quería repetirlo</span></div><figure class="step-photo"><img src="moments/03-primer-rato.jpg" alt="La pareja al aire libre" loading="lazy"><figcaption>primeros ratos</figcaption></figure></article>
-          <article class="story-step reveal"><div class="step-copy"><span class="step-number">04</span><h3>Y la ruta se volvió enorme.</h3><p>De pronto cabían montañas, ferias, bicicletas, playas, besos y esos silencios cómodos donde no hace falta decir nada para estar bien.</p><span class="hand-note">mi lugar favorito sigue siendo contigo</span></div><figure class="step-photo"><img src="moments/05-aventura.jpg" alt="La pareja disfrutando una vista panorámica" loading="lazy"><figcaption>el mundo se ve mejor contigo</figcaption></figure></article>
+          <article class="story-step reveal"><div class="step-copy"><span class="step-number">04</span><h3>Y la ruta se volvió enorme.</h3><p>De pronto cabían montañas, ferias, bicicletas, playas, besos y esos silencios cómodos donde no hace falta decir nada para estar bien.</p><span class="hand-note">mi lugar favorito sigue siendo contigo</span></div><figure class="step-photo step-photo--route"><img src="moments/05-aventura.jpg" alt="La pareja disfrutando una vista panorámica" loading="lazy"><figcaption>el mundo se ve mejor contigo</figcaption></figure></article>
           <div class="travel-finish" aria-hidden="true"><svg class="travel-line" viewBox="0 0 1000 120" preserveAspectRatio="none"><path d="M35 65 C190 15 280 97 430 53 S700 18 900 53"/><circle cx="35" cy="65" r="8"/><circle cx="290" cy="65" r="8"/><circle cx="575" cy="40" r="8"/><circle cx="900" cy="53" r="8"/><g transform="translate(885 25) rotate(9)"><path class="plane" d="M0 23 70 0 49 48 35 28 0 23Z"/><path class="plane" d="m35 28 35-28"/></g></svg><span class="finish-note">y todavía nos queda mucho cielo</span><figure class="ride-sticker"><img src="moments/10-bicicletas.jpg" alt="" loading="lazy"><figcaption>pedaleando juntos</figcaption></figure></div>
         </section>
 
