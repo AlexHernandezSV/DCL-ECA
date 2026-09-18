@@ -46,9 +46,9 @@
       .page::before { top: 10rem; right: -11rem; width: 27rem; height: 27rem; background: rgba(234, 164, 162, .34); }
       .page::after { top: 58rem; left: -13rem; width: 28rem; height: 28rem; background: rgba(164, 182, 170, .28); }
 
-      .topbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; width: min(1160px, calc(100% - 2.5rem)); margin: 0 auto; padding: 1.3rem 0; }
-      .brand { display: inline-flex; align-items: center; gap: .55rem; color: var(--navy); font-family: Georgia, serif; font-size: 1.1rem; font-weight: 700; text-decoration: none; }
-      .brand-heart { color: var(--dust); font-size: 1.5rem; }
+      .topbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; width: min(1160px, calc(100% - 2.5rem)); margin: 0 auto; padding: 1.5rem 0; }
+      .brand { display: inline-flex; align-items: center; gap: .7rem; color: var(--navy); font-family: Georgia, serif; font-size: 1.65rem; font-weight: 700; letter-spacing: -.03em; text-decoration: none; }
+      .brand-heart { color: var(--dust); font-size: 2.05rem; line-height: 1; }
       .top-link { color: var(--dust-dark); font-size: .78rem; font-weight: 800; text-decoration: none; }
       .top-link:hover, .top-link:focus-visible { color: var(--navy); }
 
@@ -171,7 +171,9 @@
 
       @media (max-width: 760px) {
         .topbar, .cover, .story, .video-section, .finale { width: min(100% - 1.4rem, 620px); }
-        .topbar { padding-top: 1rem; }
+        .topbar { padding-top: 1.15rem; }
+        .brand { font-size: 1.45rem; }
+        .brand-heart { font-size: 1.85rem; }
         .top-link { font-size: .72rem; }
         .cover { padding-top: 1.5rem; }
         .cover-card { padding: 1rem; }
