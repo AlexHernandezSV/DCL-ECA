@@ -3,297 +3,189 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#082a37" />
-    <meta name="description" content="Una historia que comenzó en los pasillos, siguió en una capacitación y encontró su primera ruta corriendo juntos." />
-    <title>La ruta que empezó contigo</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23082a37'/%3E%3Ccircle cx='20' cy='43' r='8' fill='none' stroke='%23f4b36a' stroke-width='3'/%3E%3Ccircle cx='45' cy='43' r='8' fill='none' stroke='%23f4b36a' stroke-width='3'/%3E%3Cpath d='m20 43 11-18 7 18m-11-8h18m-7 8 7-18 5 10' fill='none' stroke='%23f4b36a' stroke-linecap='round' stroke-linejoin='round' stroke-width='3'/%3E%3C/svg%3E" />
+    <meta name="theme-color" content="#f7e6e2" />
+    <meta name="description" content="Una historia de dos, guardada entre fotos, canciones, viajes y corazones." />
+    <title>Tú + yo · nuestra historia</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23cb6e72'/%3E%3Cpath d='M32 50S11 38 11 24c0-8 10-12 16-4 6-8 26-4 26 8 0 12-21 22-21 22Z' fill='%23fffaf4'/%3E%3C/svg%3E" />
     <style>
       :root {
-        --ink: #f8f4e8;
-        --muted: #afc1c0;
-        --deep: #061b24;
-        --ocean: #082a37;
-        --teal: #69b6ac;
-        --foam: #b6ded1;
-        --sand: #f1e3c6;
-        --sun: #f4b36a;
-        --coral: #ef826e;
-        --line: rgba(233, 247, 239, .18);
-        --panel: rgba(233, 247, 239, .075);
-        --shadow: 0 2rem 5rem rgba(0, 10, 16, .32);
+        --cream: #fffaf4;
+        --paper: #f7e6e2;
+        --paper-dark: #ead0cc;
+        --navy: #102f46;
+        --ink: #273646;
+        --dust: #cb6e72;
+        --dust-dark: #a94e5b;
+        --rose: #eaa4a2;
+        --sage: #a4b6aa;
+        --sun: #edba67;
+        --line: rgba(16, 47, 70, .25);
+        --shadow: 0 1.25rem 2.2rem rgba(16, 47, 70, .13);
       }
-
       * { box-sizing: border-box; }
       html { scroll-behavior: smooth; }
       body {
         min-width: 320px;
         margin: 0;
         color: var(--ink);
-        background: var(--deep);
-        font-family: Arial, Helvetica, sans-serif;
+        background: var(--paper);
+        font-family: "Avenir Next", "Trebuchet MS", sans-serif;
         font-size: 16px;
         line-height: 1.55;
         overflow-x: hidden;
       }
+      body::before { position: fixed; inset: 0; z-index: -1; content: ""; opacity: .25; pointer-events: none; background-image: radial-gradient(rgba(16, 47, 70, .16) .7px, transparent .8px); background-size: 10px 10px; mix-blend-mode: multiply; }
       a { color: inherit; }
       button, input { font: inherit; }
-      ::selection { color: var(--deep); background: var(--sun); }
-
-      .skip-link {
-        position: fixed;
-        top: -4rem;
-        left: 1rem;
-        z-index: 20;
-        padding: .7rem 1rem;
-        border-radius: 999px;
-        color: var(--deep);
-        background: var(--sand);
-      }
+      button { -webkit-tap-highlight-color: transparent; }
+      ::selection { color: var(--cream); background: var(--dust); }
+      .skip-link { position: fixed; top: -4rem; left: 1rem; z-index: 30; padding: .65rem 1rem; border-radius: 999px; color: var(--cream); background: var(--navy); }
       .skip-link:focus { top: 1rem; }
+      .page { position: relative; max-width: 1280px; margin: 0 auto; overflow: hidden; }
+      .page::before, .page::after { position: absolute; z-index: -1; content: ""; border-radius: 50%; pointer-events: none; }
+      .page::before { top: 10rem; right: -11rem; width: 27rem; height: 27rem; background: rgba(234, 164, 162, .34); }
+      .page::after { top: 58rem; left: -13rem; width: 28rem; height: 28rem; background: rgba(164, 182, 170, .28); }
 
-      .site-shell { position: relative; isolation: isolate; }
-      .site-shell::before {
-        position: fixed;
-        inset: 0;
-        z-index: -2;
-        content: "";
-        background:
-          radial-gradient(circle at 8% 4%, rgba(105, 182, 172, .17), transparent 28rem),
-          radial-gradient(circle at 95% 49%, rgba(239, 130, 110, .14), transparent 30rem),
-          linear-gradient(135deg, var(--ocean), var(--deep) 75%);
-      }
-      .site-shell::after {
-        position: fixed;
-        inset: 0;
-        z-index: -1;
-        pointer-events: none;
-        content: "";
-        opacity: .15;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E");
-        mix-blend-mode: screen;
-      }
+      .topbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; width: min(1160px, calc(100% - 2.5rem)); margin: 0 auto; padding: 1.3rem 0; }
+      .brand { display: inline-flex; align-items: center; gap: .55rem; color: var(--navy); font-family: Georgia, serif; font-size: 1.1rem; font-weight: 700; text-decoration: none; }
+      .brand-heart { color: var(--dust); font-size: 1.5rem; }
+      .top-link { color: var(--dust-dark); font-size: .78rem; font-weight: 800; text-decoration: none; }
+      .top-link:hover, .top-link:focus-visible { color: var(--navy); }
 
-      .topbar {
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 5;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: min(1200px, calc(100% - 3rem));
-        margin: 0 auto;
-        padding: 1.4rem 0;
-      }
-      .wordmark {
-        display: inline-flex;
-        align-items: center;
-        gap: .65rem;
-        color: var(--ink);
-        font-size: .72rem;
-        font-weight: 700;
-        letter-spacing: .16em;
-        text-decoration: none;
-        text-transform: uppercase;
-      }
-      .wordmark-mark {
-        display: grid;
-        place-items: center;
-        width: 1.9rem;
-        height: 1.9rem;
-        border: 1px solid rgba(244, 179, 106, .8);
-        border-radius: 50%;
-        color: var(--sun);
-        font-size: 1rem;
-      }
-      .topbar-tools { display: flex; align-items: center; gap: 1.4rem; }
-      .compact-player {
-        display: inline-flex;
-        align-items: center;
-        gap: .5rem;
-        padding: .45rem .7rem;
-        border: 1px solid rgba(182, 222, 209, .45);
-        border-radius: 999px;
-        color: var(--sand);
-        background: rgba(233, 247, 239, .06);
-        cursor: pointer;
-        font-size: .72rem;
-        font-weight: 700;
-        letter-spacing: .08em;
-        text-transform: uppercase;
-        transition: border-color .2s ease, background .2s ease, transform .2s ease;
-      }
-      .compact-player:hover, .compact-player:focus-visible { border-color: var(--sun); background: rgba(244, 179, 106, .13); transform: translateY(-2px); }
-      .compact-player.is-playing { color: var(--deep); border-color: var(--sun); background: var(--sun); }
-      .compact-icon { display: inline-grid; place-items: center; width: 1.1rem; height: 1.1rem; font-size: 1rem; line-height: 1; }
-      .route-meter { display: flex; align-items: center; gap: .7rem; color: var(--muted); font-size: .72rem; letter-spacing: .13em; text-transform: uppercase; }
-      .meter-line { width: 5rem; height: 1px; overflow: hidden; background: var(--line); }
-      .meter-line span { display: block; width: 20%; height: 100%; background: var(--sun); transition: width .4s ease; }
+      .cover { width: min(960px, calc(100% - 2.5rem)); margin: 0 auto; padding: 2rem 0 8rem; text-align: center; }
+      .cover-card { position: relative; padding: clamp(1.2rem, 4vw, 3rem); border: 1px solid rgba(16, 47, 70, .1); background: rgba(255, 250, 244, .74); box-shadow: var(--shadow); }
+      .cover-card::before, .cover-card::after { position: absolute; width: 7rem; height: 1.2rem; content: ""; background: rgba(234, 164, 162, .6); }
+      .cover-card::before { top: -.55rem; left: 18%; transform: rotate(-4deg); }
+      .cover-card::after { right: 15%; bottom: -.55rem; background: rgba(237, 186, 103, .66); transform: rotate(3deg); }
+      .cover-photo { max-width: 620px; margin: 0 auto 2rem; padding: .7rem .7rem 3.25rem; background: var(--cream); box-shadow: 0 1rem 2rem rgba(16, 47, 70, .15); transform: rotate(-1.7deg); }
+      .cover-photo img { display: block; width: 100%; height: clamp(19rem, 50vw, 31rem); object-fit: cover; }
+      .cover-photo figcaption { margin-top: .75rem; color: var(--navy); font-family: "Segoe Print", "Bradley Hand", cursive; font-size: 1.1rem; font-weight: 700; }
+      .script { color: var(--dust); font-family: "Segoe Print", "Bradley Hand", cursive; font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 700; line-height: .95; }
+      .cover h1 { max-width: 10ch; margin: .25rem auto 1rem; color: var(--navy); font-family: Georgia, serif; font-size: clamp(3rem, 8vw, 6.8rem); font-weight: 500; line-height: .9; letter-spacing: -.07em; }
+      .cover-copy { max-width: 34rem; margin: 0 auto 1.5rem; color: var(--ink); font-size: 1.08rem; }
+      .cover-copy strong { color: var(--dust-dark); }
+      .cover-footer { display: flex; align-items: center; justify-content: center; gap: .9rem; color: var(--navy); font-family: "Segoe Print", "Bradley Hand", cursive; font-size: .92rem; font-weight: 700; }
+      .heart-line { flex: 0 1 9rem; border-top: 2px solid var(--navy); }
+      .heart-line::after { display: block; width: .7rem; height: .7rem; margin: -.45rem auto 0; content: ""; border-radius: 50%; background: var(--navy); }
+      .music-wrap { display: flex; align-items: center; justify-content: center; gap: .7rem; margin-top: 1.2rem; }
+      .music-button { display: inline-flex; align-items: center; gap: .55rem; padding: .65rem 1rem; border: 2px solid var(--navy); border-radius: 999px; color: var(--cream); background: var(--navy); cursor: pointer; font-size: .8rem; font-weight: 800; box-shadow: 4px 4px 0 var(--dust); transition: transform .2s ease, box-shadow .2s ease; }
+      .music-button:hover, .music-button:focus-visible { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--dust); }
+      .music-button.is-playing { background: var(--dust-dark); }
+      .music-icon { display: grid; place-items: center; width: 1.45rem; height: 1.45rem; border-radius: 50%; color: var(--navy); background: var(--sun); }
 
-      main { overflow: clip; }
-      h1, h2, h3, p { margin-top: 0; }
-      h1, h2, h3 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; }
+      .story { position: relative; width: min(1080px, calc(100% - 2.5rem)); margin: 0 auto; padding: 1rem 0 7rem; }
+      .story-intro { display: grid; grid-template-columns: .9fr 1.1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
+      .section-kicker { margin: 0 0 .8rem; color: var(--dust-dark); font-size: .75rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+      .story-intro h2, .ribbon-intro h2, .video-intro h2, .finale h2 { max-width: 10ch; margin: 0; color: var(--navy); font-family: Georgia, serif; font-size: clamp(2.8rem, 6vw, 5.7rem); font-weight: 500; line-height: .91; letter-spacing: -.075em; }
+      .story-intro p:last-child, .ribbon-intro p:last-child, .video-intro p:last-child { max-width: 28rem; margin: 0; color: var(--ink); font-size: 1.02rem; }
+      .story-path { position: absolute; top: 10rem; bottom: 2rem; left: 50%; z-index: -1; width: 0; border-left: 3px dotted var(--dust); opacity: .65; transform: translateX(-50%) rotate(3deg); }
+      .story-path::before, .story-path::after { position: absolute; left: -.62rem; width: 1rem; height: 1rem; content: ""; border: 2px solid var(--navy); border-radius: 50%; background: var(--sun); }
+      .story-path::before { top: 0; }
+      .story-path::after { bottom: 0; }
+      .story-step { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 8vw, 8rem); align-items: center; min-height: 22rem; margin: 1rem 0; }
+      .story-step:nth-of-type(even) .step-copy { order: 2; }
+      .story-step:nth-of-type(even) .step-photo { order: 1; }
+      .step-copy { padding: 1rem; }
+      .step-number { display: inline-grid; place-items: center; width: 2.3rem; height: 2.3rem; margin-bottom: 1rem; border: 2px solid var(--navy); border-radius: 50%; color: var(--navy); background: var(--sun); font-family: Georgia, serif; font-weight: 700; }
+      .step-copy h3 { max-width: 9ch; margin: 0 0 .8rem; color: var(--navy); font-family: Georgia, serif; font-size: clamp(2.2rem, 4.5vw, 4.1rem); font-weight: 500; line-height: .92; letter-spacing: -.07em; }
+      .step-copy p { max-width: 32rem; margin: 0; color: var(--ink); font-size: 1.04rem; }
+      .hand-note { display: block; margin-top: 1rem; color: var(--dust-dark); font-family: "Segoe Print", "Bradley Hand", cursive; font-size: .9rem; font-weight: 700; transform: rotate(-3deg); }
+      .step-photo { position: relative; width: min(100%, 21rem); padding: .65rem .65rem 2.8rem; background: var(--cream); box-shadow: var(--shadow); transform: rotate(4deg); }
+      .story-step:nth-of-type(3) .step-photo { transform: rotate(-5deg); }
+      .story-step:nth-of-type(4) .step-photo { transform: rotate(3deg); }
+      .story-step:nth-of-type(5) .step-photo { transform: rotate(-3deg); }
+      .step-photo img { display: block; width: 100%; height: 17rem; object-fit: cover; }
+      .step-photo figcaption { position: absolute; right: .8rem; bottom: .55rem; left: .8rem; color: var(--navy); font-family: "Segoe Print", "Bradley Hand", cursive; font-size: .82rem; font-weight: 700; }
 
-      .opening {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(20rem, .82fr);
-        align-items: center;
-        gap: clamp(2rem, 7vw, 8rem);
-        min-height: 100svh;
-        width: min(1200px, calc(100% - 3rem));
-        margin: 0 auto;
-        padding: 8rem 0 5rem;
-      }
-      .eyebrow { display: inline-flex; align-items: center; gap: .65rem; margin: 0 0 1.5rem; color: var(--sun); font-size: .75rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
-      .eyebrow::before { width: 2rem; height: 1px; content: ""; background: var(--sun); }
-      .opening h1 { max-width: 12ch; margin-bottom: 1.45rem; color: var(--sand); font-size: clamp(3.1rem, 6.7vw, 7rem); line-height: .93; letter-spacing: -.065em; }
-      .opening-copy { max-width: 37rem; }
-      .opening-copy > p:not(.eyebrow) { max-width: 31rem; margin-bottom: 1.8rem; color: var(--muted); font-size: clamp(1rem, 1.6vw, 1.15rem); }
-      .audio-player {
-        display: flex;
-        align-items: center;
-        gap: .9rem;
-        width: min(100%, 29rem);
-        padding: .7rem .9rem;
-        border: 1px solid rgba(182, 222, 209, .3);
-        border-radius: 1rem;
-        background: rgba(5, 20, 28, .47);
-        box-shadow: 0 1.5rem 3.5rem rgba(0, 12, 18, .18);
-        backdrop-filter: blur(12px);
-      }
-      .play-button {
-        display: grid;
-        flex: 0 0 auto;
-        place-items: center;
-        width: 3rem;
-        height: 3rem;
-        border: 0;
-        border-radius: 50%;
-        color: var(--deep);
-        background: var(--sun);
-        cursor: pointer;
-        font-size: 1.15rem;
-        transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-      }
-      .play-button:hover, .play-button:focus-visible { transform: scale(1.06); box-shadow: 0 .8rem 1.6rem rgba(244, 179, 106, .2); }
-      .play-button.is-playing { background: var(--foam); }
-      .player-body { min-width: 0; flex: 1; }
-      .player-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin: 0 0 .45rem; color: var(--sand); font-size: .8rem; font-weight: 700; }
-      .player-heading span:last-child { color: var(--teal); font-size: 1.05rem; }
-      .range-wrap { display: flex; align-items: center; gap: .65rem; }
-      .range-wrap input { flex: 1; min-width: 0; accent-color: var(--sun); cursor: pointer; }
-      .player-time { display: flex; justify-content: space-between; margin-top: .1rem; color: var(--muted); font-size: .67rem; letter-spacing: .04em; }
-      .audio-note { margin: .7rem 0 0; color: rgba(175, 193, 192, .78); font-size: .78rem; }
-
-      .hero-visual { position: relative; justify-self: end; width: min(100%, 27rem); aspect-ratio: .8; }
-      .hero-visual::before { position: absolute; inset: 12% -12% 16% 6%; content: ""; border: 1px solid rgba(244, 179, 106, .4); border-radius: 50% 50% 1rem 1rem; transform: rotate(7deg); }
-      .visual-frame { position: absolute; inset: 0; overflow: hidden; border: 1px solid rgba(182, 222, 209, .35); border-radius: 1rem 1rem 10rem 10rem; background: linear-gradient(155deg, rgba(8, 42, 55, .08), rgba(4, 17, 25, .6)), url('moments/01-oficina.jpg') center / cover no-repeat; box-shadow: var(--shadow); }
-      .visual-frame::after { position: absolute; inset: 0; content: ""; background: linear-gradient(20deg, rgba(5, 20, 28, .72), transparent 56%, rgba(244, 179, 106, .16)); }
-      .route-stamp { position: absolute; right: -2.3rem; bottom: 12%; z-index: 1; width: 10.8rem; padding: .95rem 1rem; border: 1px solid rgba(244, 179, 106, .6); border-radius: .7rem; color: var(--deep); background: var(--sun); box-shadow: 0 1rem 2.5rem rgba(0, 12, 18, .25); transform: rotate(-5deg); }
-      .route-stamp strong { display: block; margin-bottom: .15rem; font-family: Georgia, serif; font-size: 1.45rem; font-weight: 400; }
-      .route-stamp span { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-
-      .story { width: min(1040px, calc(100% - 3rem)); margin: 0 auto; padding: 7rem 0 5rem; }
-      .story-heading { display: grid; grid-template-columns: .72fr 1.28fr; gap: 3rem; align-items: end; margin: 0 auto 4rem; }
-      .route-label { margin-bottom: .8rem; color: var(--teal); font-size: .76rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
-      .story-heading h2 { max-width: 12ch; margin-bottom: 0; color: var(--sand); font-size: clamp(2.8rem, 5.4vw, 5.4rem); line-height: .94; letter-spacing: -.06em; }
-      .story-heading p:last-child { max-width: 29rem; margin-bottom: .3rem; color: var(--muted); }
-      .route { position: relative; }
-      .route::before { position: absolute; top: 1.5rem; bottom: 1.5rem; left: 5.7rem; width: 1px; content: ""; background: repeating-linear-gradient(to bottom, var(--teal) 0 7px, transparent 7px 15px); opacity: .62; }
-      .stop { position: relative; display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: 2rem; align-items: start; padding: 2.5rem 0; }
-      .stop-marker { position: relative; z-index: 1; display: grid; place-items: center; justify-self: center; width: 3rem; height: 3rem; border: 1px solid var(--teal); border-radius: 50%; color: var(--deep); background: var(--teal); font-family: Georgia, serif; font-size: 1.1rem; box-shadow: 0 0 0 .5rem rgba(105, 182, 172, .09); }
-      .stop-copy { padding: clamp(1.8rem, 4vw, 3.3rem); border: 1px solid var(--line); border-radius: 1rem; background: linear-gradient(135deg, rgba(233, 247, 239, .1), rgba(233, 247, 239, .025)); box-shadow: var(--shadow); }
-      .stop-copy::after { display: block; width: 3rem; height: 1px; margin-top: 1.5rem; content: ""; background: var(--coral); }
-      .stop-kicker { margin-bottom: .7rem; color: var(--sun); font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
-      .stop-copy h3 { max-width: 13ch; margin-bottom: 1rem; color: var(--sand); font-size: clamp(2.2rem, 4vw, 4.2rem); line-height: .96; letter-spacing: -.05em; }
-      .stop-copy p { max-width: 42rem; margin-bottom: 0; color: var(--muted); font-size: 1.05rem; }
-      .route-note { display: inline-block; margin-top: 1.6rem; color: var(--foam); font-family: Georgia, serif; font-size: 1.08rem; font-style: italic; }
-
-      .memories { width: min(1200px, calc(100% - 3rem)); margin: 0 auto; padding: 5rem 0 7rem; }
-      .memories-heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: 2rem; }
-      .memories-heading h2 { max-width: 10ch; margin-bottom: .5rem; color: var(--sand); font-size: clamp(2.8rem, 5vw, 5.3rem); line-height: .93; letter-spacing: -.06em; }
-      .memories-heading p { max-width: 25rem; margin-bottom: .2rem; color: var(--muted); }
-      .memory-controls { display: flex; flex-wrap: wrap; gap: .55rem; margin-bottom: 1.6rem; }
-      .filter-button, .surprise-button { padding: .62rem .9rem; border: 1px solid var(--line); border-radius: 999px; color: var(--sand); background: rgba(233, 247, 239, .05); cursor: pointer; font-size: .76rem; font-weight: 700; letter-spacing: .04em; transition: background .2s ease, border-color .2s ease, transform .2s ease; }
-      .filter-button:hover, .filter-button:focus-visible, .surprise-button:hover, .surprise-button:focus-visible { border-color: var(--teal); background: rgba(105, 182, 172, .15); transform: translateY(-2px); }
-      .filter-button[aria-pressed="true"] { color: var(--deep); border-color: var(--teal); background: var(--teal); }
-      .surprise-button { margin-left: auto; color: var(--deep); border-color: var(--sun); background: var(--sun); }
-      .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 11rem; gap: .9rem; }
-      .memory-card { position: relative; min-width: 0; overflow: hidden; padding: 0; border: 0; border-radius: .9rem; background: var(--panel); cursor: pointer; box-shadow: 0 .7rem 1.6rem rgba(0, 11, 17, .2); transform: rotate(var(--tilt, 0deg)); transition: transform .25s ease, box-shadow .25s ease, opacity .25s ease; }
-      .memory-card:nth-child(3n) { --tilt: -1.3deg; }
-      .memory-card:nth-child(4n) { --tilt: 1.2deg; }
-      .memory-card:hover, .memory-card:focus-visible { z-index: 2; box-shadow: 0 1.5rem 2.4rem rgba(0, 11, 17, .38); transform: translateY(-7px) rotate(0deg) scale(1.03); }
+      .ribbon-section { position: relative; padding: 6rem 0 7rem; background: var(--navy); transform: rotate(-1deg) scale(1.02); }
+      .ribbon-section::before, .ribbon-section::after { position: absolute; right: -2rem; left: -2rem; height: 1rem; content: ""; background: var(--paper); }
+      .ribbon-section::before { top: -.45rem; transform: rotate(1deg); }
+      .ribbon-section::after { bottom: -.45rem; transform: rotate(1deg); }
+      .ribbon-inner { width: min(1180px, calc(100% - 2.5rem)); margin: 0 auto; transform: rotate(1deg); }
+      .ribbon-intro { display: flex; justify-content: space-between; gap: 2rem; align-items: end; margin-bottom: 1.7rem; }
+      .ribbon-intro h2, .ribbon-intro p:last-child { color: var(--cream); }
+      .ribbon-tabs { display: flex; flex-wrap: wrap; gap: .55rem; margin-bottom: 1rem; }
+      .ribbon-tab { padding: .5rem .8rem; border: 1px solid rgba(255, 250, 244, .5); border-radius: 999px; color: var(--cream); background: transparent; cursor: pointer; font-size: .75rem; font-weight: 800; }
+      .ribbon-tab:hover, .ribbon-tab:focus-visible, .ribbon-tab[aria-pressed="true"] { color: var(--navy); background: var(--sun); }
+      .memory-ribbon { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(13rem, 18rem); gap: 1.1rem; padding: 1.2rem .4rem 2rem; overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-color: var(--sun) rgba(255, 250, 244, .2); }
+      .memory-ribbon::-webkit-scrollbar { height: .65rem; }
+      .memory-ribbon::-webkit-scrollbar-track { background: rgba(255, 250, 244, .18); border-radius: 999px; }
+      .memory-ribbon::-webkit-scrollbar-thumb { background: var(--sun); border-radius: 999px; }
+      .memory-card { position: relative; min-height: 20rem; padding: .6rem .6rem 3rem; border: 0; background: var(--cream); box-shadow: 0 1rem 1.6rem rgba(0, 0, 0, .2); cursor: pointer; transform: rotate(-3deg); transition: transform .22s ease, box-shadow .22s ease; }
+      .memory-card:nth-child(2n) { transform: rotate(3deg); }
+      .memory-card:nth-child(3n) { transform: rotate(-5deg); }
+      .memory-card:hover, .memory-card:focus-visible { z-index: 2; box-shadow: 0 1.4rem 2.2rem rgba(0, 0, 0, .3); transform: translateY(-8px) rotate(0deg); }
       .memory-card.is-hidden { display: none; }
-      .memory-card:nth-child(1), .memory-card:nth-child(8) { grid-row: span 2; }
-      .memory-card:nth-child(2), .memory-card:nth-child(6), .memory-card:nth-child(10) { grid-column: span 2; }
-      .memory-card img { display: block; width: 100%; height: 100%; object-fit: cover; }
-      .memory-card::after { position: absolute; inset: 0; content: ""; background: linear-gradient(180deg, transparent 40%, rgba(3, 14, 20, .8)); pointer-events: none; }
-      .memory-tag { position: absolute; right: .75rem; bottom: .7rem; left: .75rem; z-index: 1; color: var(--sand); font-size: .75rem; font-weight: 700; text-align: left; }
-      .memory-tag small { display: block; margin-top: .1rem; color: var(--sun); font-size: .63rem; letter-spacing: .1em; text-transform: uppercase; }
-      .video-moments { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; margin-top: 1.8rem; }
-      .video-card { overflow: hidden; border: 1px solid var(--line); border-radius: 1rem; background: rgba(233, 247, 239, .045); }
-      .video-card video { display: block; width: 100%; aspect-ratio: 1.35; object-fit: cover; background: var(--deep); }
-      .video-card p { margin: 0; padding: .8rem .9rem 1rem; color: var(--muted); font-size: .78rem; }
-      dialog { width: min(92vw, 52rem); padding: 0; border: 1px solid rgba(182, 222, 209, .4); border-radius: 1rem; color: var(--sand); background: var(--ocean); box-shadow: 0 2rem 7rem rgba(0, 0, 0, .55); }
-      dialog::backdrop { background: rgba(2, 12, 18, .82); backdrop-filter: blur(8px); }
-      .dialog-close { position: absolute; top: .7rem; right: .7rem; z-index: 2; display: grid; place-items: center; width: 2.2rem; height: 2.2rem; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; color: var(--sand); background: rgba(0, 0, 0, .32); cursor: pointer; font-size: 1.1rem; }
-      .dialog-image { display: block; width: 100%; max-height: 75vh; object-fit: contain; background: var(--deep); }
-      .dialog-caption { margin: 0; padding: 1rem 1.2rem 1.25rem; color: var(--sand); font-family: Georgia, serif; font-size: 1.15rem; }
+      .memory-card::before { position: absolute; top: -.35rem; left: 50%; width: 4.3rem; height: 1.15rem; content: ""; background: rgba(237, 186, 103, .75); transform: translateX(-50%) rotate(-5deg); }
+      .memory-card:nth-child(2n)::before { background: rgba(234, 164, 162, .75); transform: translateX(-50%) rotate(4deg); }
+      .memory-card img { display: block; width: 100%; height: 16.7rem; object-fit: cover; }
+      .memory-caption { position: absolute; right: .8rem; bottom: .6rem; left: .8rem; color: var(--navy); font-family: "Segoe Print", "Bradley Hand", cursive; font-size: .78rem; font-weight: 700; line-height: 1.1; text-align: left; }
+      .memory-caption small { display: block; margin-top: .18rem; color: var(--dust-dark); font-family: "Trebuchet MS", sans-serif; font-size: .62rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
 
-      .finale { position: relative; display: grid; place-items: center; min-height: 90svh; width: min(900px, calc(100% - 3rem)); margin: 0 auto; padding: 7rem 0 9rem; text-align: center; }
-      .finale::before { position: absolute; width: min(34rem, 85vw); height: min(34rem, 85vw); content: ""; border-radius: 50%; background: rgba(105, 182, 172, .1); filter: blur(65px); }
-      .finale-content { position: relative; z-index: 1; }
-      .finale h2 { max-width: 10ch; margin: 1rem auto 1.45rem; color: var(--sand); font-size: clamp(3.5rem, 8vw, 7rem); line-height: .9; letter-spacing: -.07em; }
-      .finale p { max-width: 32rem; margin: 0 auto 2rem; color: var(--muted); font-size: 1.05rem; }
-      .answer-row { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; }
-      .answer { min-width: 10rem; padding: .9rem 1.4rem; border: 1px solid var(--sun); border-radius: 999px; color: var(--deep); background: var(--sun); cursor: pointer; font-size: .88rem; font-weight: 700; letter-spacing: .05em; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
-      .answer.secondary { color: var(--sand); background: transparent; }
-      .answer:hover, .answer:focus-visible { transform: translateY(-3px); box-shadow: 0 .9rem 1.8rem rgba(244, 179, 106, .2); }
-      .answer.secondary:hover, .answer.secondary:focus-visible { background: var(--panel); }
-      .reveal-message { display: none; max-width: 35rem; margin: 1.8rem auto 0; padding: 1rem 1.2rem; border: 1px solid rgba(182, 222, 209, .3); border-radius: .8rem; color: var(--sand); background: var(--panel); }
-      .reveal-message.is-visible { display: block; animation: arrive .45s ease both; }
-      .heart { position: fixed; z-index: 10; pointer-events: none; color: var(--coral); font-size: 1.5rem; animation: float-away 1.7s ease-out forwards; }
-      @keyframes arrive { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-      @keyframes float-away { 0% { opacity: 1; transform: translate(-50%, 0) scale(.7) rotate(0); } 100% { opacity: 0; transform: translate(-50%, -180px) scale(1.25) rotate(18deg); } }
+      .video-section { width: min(1060px, calc(100% - 2.5rem)); margin: 0 auto; padding: 9rem 0 6rem; }
+      .video-intro { display: flex; justify-content: space-between; gap: 2rem; align-items: end; margin-bottom: 2rem; }
+      .film-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+      .film-card { position: relative; overflow: hidden; padding: .55rem .55rem 2.8rem; border: 1px solid rgba(16, 47, 70, .1); background: var(--cream); box-shadow: var(--shadow); transform: rotate(2deg); }
+      .film-card:nth-child(2) { transform: rotate(-2deg) translateY(1rem); }
+      .film-card:nth-child(3) { transform: rotate(3deg); }
+      .film-card video { display: block; width: 100%; height: 19rem; object-fit: cover; background: var(--navy); }
+      .film-card p { margin: .65rem .25rem 0; color: var(--navy); font-family: "Segoe Print", "Bradley Hand", cursive; font-size: .78rem; font-weight: 700; line-height: 1.15; }
+      .film-card::after { position: absolute; right: .75rem; bottom: .8rem; content: "♥ loop"; color: var(--dust); font-size: .65rem; font-weight: 900; letter-spacing: .08em; }
 
-      footer { width: min(1200px, calc(100% - 3rem)); margin: 0 auto; padding: 1.5rem 0 2.2rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .78rem; }
-      footer span { color: var(--sun); }
-      .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-      .reveal { opacity: 0; transform: translateY(22px); transition: opacity .75s ease, transform .75s ease; }
+      .finale { position: relative; width: min(760px, calc(100% - 2.5rem)); margin: 0 auto; padding: 6rem 0 9rem; text-align: center; }
+      .finale::before { position: absolute; top: 0; left: 50%; height: 4rem; content: ""; border-left: 3px dotted var(--dust); transform: translateX(-50%); }
+      .finale h2 { max-width: 9ch; margin: 1.3rem auto 1.2rem; font-size: clamp(3.2rem, 8vw, 6.8rem); }
+      .finale p { max-width: 34rem; margin: 0 auto 1.7rem; color: var(--ink); font-size: 1.05rem; }
+      .answer-row { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
+      .answer { min-width: 10rem; padding: .82rem 1.25rem; border: 2px solid var(--navy); border-radius: 999px; color: var(--cream); background: var(--navy); box-shadow: 4px 4px 0 var(--dust); cursor: pointer; font-size: .87rem; font-weight: 900; transition: transform .2s ease, box-shadow .2s ease; }
+      .answer.secondary { color: var(--navy); background: transparent; box-shadow: 4px 4px 0 var(--sun); }
+      .answer:hover, .answer:focus-visible { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--dust); }
+      .answer.secondary:hover, .answer.secondary:focus-visible { box-shadow: 2px 2px 0 var(--sun); }
+      .reveal-message { display: none; max-width: 34rem; margin: 1.6rem auto 0; padding: 1rem 1.2rem; border: 2px dashed var(--dust-dark); color: var(--dust-dark); background: rgba(255, 250, 244, .7); font-family: "Segoe Print", "Bradley Hand", cursive; font-weight: 700; }
+      .reveal-message.is-visible { display: block; animation: pop .45s ease both; }
+      footer { width: min(1160px, calc(100% - 2.5rem)); margin: 0 auto; padding: 1rem 0 2rem; border-top: 2px dotted var(--line); color: var(--ink); font-size: .78rem; text-align: center; }
+      footer span { color: var(--dust-dark); font-weight: 900; }
+
+      dialog { width: min(92vw, 52rem); padding: 0; border: 0; background: var(--cream); box-shadow: 0 2rem 5rem rgba(16, 47, 70, .4); }
+      dialog::backdrop { background: rgba(16, 47, 70, .72); backdrop-filter: blur(5px); }
+      .dialog-close { position: absolute; top: .6rem; right: .6rem; z-index: 2; display: grid; place-items: center; width: 2.2rem; height: 2.2rem; border: 2px solid var(--navy); border-radius: 50%; color: var(--navy); background: var(--cream); cursor: pointer; font-size: 1.2rem; font-weight: 900; }
+      .dialog-image { display: block; width: 100%; max-height: 76vh; object-fit: contain; background: var(--navy); }
+      .dialog-caption { margin: 0; padding: 1rem 1.2rem 1.3rem; color: var(--navy); font-family: "Segoe Print", "Bradley Hand", cursive; font-weight: 700; }
+      .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
       .reveal.is-visible { opacity: 1; transform: translateY(0); }
-      .answer:focus-visible, .compact-player:focus-visible, .play-button:focus-visible, .wordmark:focus-visible { outline: 2px solid var(--sand); outline-offset: 4px; }
+      .heart { position: fixed; z-index: 10; pointer-events: none; color: var(--dust); font-size: 1.5rem; animation: float-away 1.7s ease-out forwards; }
+      @keyframes pop { from { opacity: 0; transform: scale(.96) rotate(-1deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
+      @keyframes float-away { 0% { opacity: 1; transform: translate(-50%, 0) scale(.7) rotate(0); } 100% { opacity: 0; transform: translate(-50%, -180px) scale(1.25) rotate(18deg); } }
+      :focus-visible { outline: 3px solid var(--dust-dark); outline-offset: 4px; }
+      .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
-      @media (max-width: 820px) {
-        .topbar, .opening, .story, footer { width: min(100% - 2rem, 620px); }
+      @media (max-width: 760px) {
+        .topbar, .cover, .story, .video-section, .finale { width: min(100% - 1.4rem, 620px); }
         .topbar { padding-top: 1rem; }
-        .topbar-tools { gap: .6rem; }
-        .compact-player { width: 2rem; height: 2rem; justify-content: center; padding: .35rem; }
-        .compact-player span:last-child { display: none; }
-        .route-meter { gap: .4rem; font-size: .64rem; }
-        .meter-line { width: 3.3rem; }
-        .opening { grid-template-columns: 1fr; gap: 3rem; padding-top: 7rem; }
-        .opening h1 { max-width: 11ch; }
-        .hero-visual { justify-self: center; width: min(80vw, 23rem); }
-        .route-stamp { right: -1rem; }
-        .story-heading { grid-template-columns: 1fr; gap: 1.3rem; }
-        .story-heading h2 { max-width: 11ch; }
-        .route::before { left: 1.5rem; }
-        .stop { grid-template-columns: 3rem minmax(0, 1fr); gap: 1.2rem; }
-        .stop-marker { justify-self: start; }
-        .stop-copy { padding: 1.65rem; }
-        .stop-copy h3 { max-width: 11ch; }
-        .memories, .finale { width: min(100% - 2rem, 620px); }
-        .memories-heading { display: block; }
-        .memories-heading h2 { max-width: 9ch; }
-        .memories-heading p { margin-top: 1rem; }
-        .memory-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 12rem; }
-        .memory-card:nth-child(1), .memory-card:nth-child(8) { grid-row: span 1; }
-        .memory-card:nth-child(2), .memory-card:nth-child(6), .memory-card:nth-child(10) { grid-column: span 1; }
-        .memory-card:nth-child(1), .memory-card:nth-child(5), .memory-card:nth-child(9) { grid-row: span 2; }
-        .video-moments { grid-template-columns: 1fr; }
-        .surprise-button { margin-left: 0; }
-        .finale { width: min(100% - 2rem, 620px); }
+        .top-link { font-size: .72rem; }
+        .cover { padding-top: 1.5rem; }
+        .cover-card { padding: 1rem; }
+        .cover-photo { margin-bottom: 1.5rem; }
+        .cover-photo img { height: 21rem; }
+        .cover h1 { font-size: clamp(3rem, 14vw, 5.4rem); }
+        .cover-footer { gap: .55rem; font-size: .8rem; }
+        .heart-line { flex-basis: 4rem; }
+        .story-intro, .ribbon-intro, .video-intro { display: block; }
+        .story-intro p:last-child, .ribbon-intro p:last-child, .video-intro p:last-child { margin-top: 1rem; }
+        .story-path { left: 1.1rem; top: 11rem; transform: rotate(1deg); }
+        .story-step, .story-step:nth-of-type(even) { grid-template-columns: 3rem minmax(0, 1fr); gap: .7rem; min-height: 0; margin: 2rem 0 4rem; }
+        .story-step:nth-of-type(even) .step-copy, .story-step:nth-of-type(even) .step-photo { order: initial; }
+        .step-copy { grid-column: 2; grid-row: 1; padding: 0; }
+        .step-photo { grid-column: 2; grid-row: 2; width: min(100%, 21rem); margin-top: .6rem; }
+        .step-copy h3 { font-size: clamp(2.2rem, 11vw, 3.5rem); }
+        .ribbon-section { padding: 5rem 0 5rem; }
+        .ribbon-inner { width: min(100% - 1.4rem, 620px); }
+        .memory-ribbon { margin-right: -.7rem; margin-left: -.7rem; grid-auto-columns: minmax(13rem, 17rem); }
+        .video-section { padding-top: 7rem; }
+        .film-strip { grid-template-columns: 1fr; gap: 1.4rem; }
+        .film-card, .film-card:nth-child(2), .film-card:nth-child(3) { max-width: 22rem; margin: 0 auto; transform: rotate(-2deg); }
+        .film-card:nth-child(2) { transform: rotate(2deg); }
+        .film-card video { height: 20rem; }
       }
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
@@ -303,22 +195,10 @@
   </head>
   <body>
     <a class="skip-link" href="#historia">Saltar a la historia</a>
-    <div class="site-shell">
+    <div class="page">
       <header class="topbar">
-        <a class="wordmark" href="#inicio" aria-label="Volver al inicio">
-          <span class="wordmark-mark" aria-hidden="true">↗</span>
-          nuestra ruta
-        </a>
-        <div class="topbar-tools">
-          <button class="compact-player" id="compact-player" type="button" aria-label="Reproducir la canción" aria-pressed="false">
-            <span class="compact-icon" aria-hidden="true">♫</span>
-            <span>Escuchar</span>
-          </button>
-          <div class="route-meter" aria-label="Progreso de la historia">
-            <span id="route-label">00 / 05</span>
-            <span class="meter-line" aria-hidden="true"><span id="meter-fill"></span></span>
-          </div>
-        </div>
+        <a class="brand" href="#inicio" aria-label="Volver al inicio"><span class="brand-heart" aria-hidden="true">♥</span> tú + yo</a>
+        <a class="top-link" href="#recuerdos">abrir el álbum ↓</a>
       </header>
 
       <main>
@@ -327,334 +207,118 @@
           Tu navegador no puede reproducir este audio.
         </audio>
 
-        <section class="opening" id="inicio" aria-labelledby="opening-title">
-          <div class="opening-copy reveal is-visible">
-            <p class="eyebrow">Antes de comenzar</p>
-            <h1 id="opening-title">Dale play a la canción que nos ha hecho sentir este amor.</h1>
-            <p>Y cuando empiece a sonar, acompáñame por el camino que nos trajo hasta aquí. Esta historia se lee mejor despacio.</p>
-            <div class="audio-player" aria-label="Reproductor de música">
-              <button class="play-button" id="play-button" type="button" aria-label="Reproducir la canción" aria-pressed="false">
-                <span id="play-icon" aria-hidden="true">▶</span>
-              </button>
-              <div class="player-body">
-                <div class="player-heading"><span id="music-status">Dale play para comenzar</span><span aria-hidden="true">♪</span></div>
-                <div class="range-wrap">
-                  <label class="sr-only" for="audio-progress">Progreso de la canción</label>
-                  <input id="audio-progress" type="range" min="0" max="100" value="0" step="0.1" />
-                </div>
-                <div class="player-time"><span id="elapsed">0:00</span><span id="duration">--:--</span></div>
-              </div>
-            </div>
-            <p class="audio-note" id="audio-note">La música empezará cuando presiones el botón.</p>
-          </div>
-          <div class="hero-visual reveal is-visible" aria-label="Una ruta de bicicleta hacia el mar">
-            <div class="visual-frame"></div>
-            <div class="route-stamp"><strong>km 00</strong><span>la primera ruta</span></div>
+        <section class="cover" id="inicio" aria-labelledby="cover-title">
+          <div class="cover-card reveal is-visible">
+            <figure class="cover-photo">
+              <img src="moments/09-playa-beso.jpg" alt="La pareja besándose junto al mar" fetchpriority="high">
+              <figcaption>mi lugar favorito: donde estemos juntos</figcaption>
+            </figure>
+            <div class="script">nuestra historia</div>
+            <h1 id="cover-title">tú, yo y todas las vueltas</h1>
+            <p class="cover-copy">Una colección de miradas, carreras, playas, planes improvisados y <strong>muchos motivos para quererte.</strong></p>
+            <div class="cover-footer"><span class="heart-line" aria-hidden="true"></span><span>para mi persona favorita</span><span class="heart-line" aria-hidden="true"></span></div>
+            <div class="music-wrap"><button class="music-button" id="music-button" type="button" aria-label="Reproducir nuestra canción" aria-pressed="false"><span class="music-icon" id="music-icon" aria-hidden="true">▶</span><span id="music-label">ponerle play a nuestro soundtrack</span></button></div>
           </div>
         </section>
 
         <section class="story" id="historia" aria-labelledby="story-title">
-          <div class="story-heading reveal">
-            <div>
-              <p class="route-label">Ruta 01 · Primeros kilómetros</p>
-              <span class="route-label">Una historia en movimiento</span>
+          <div class="story-intro reveal"><div><p class="section-kicker">página 01 · el comienzo</p><h2 id="story-title">Lo nuestro no llegó con instrucciones.</h2></div><p>Primero fue una mirada. Después una conversación. Y luego, sin darnos cuenta, ya estábamos haciendo espacio para el otro en nuestros días.</p></div>
+          <div class="story-path" aria-hidden="true"></div>
+
+          <article class="story-step reveal"><div class="step-copy"><span class="step-number">01</span><h3>Te vi en los pasillos.</h3><p>Muy seria, muy enojada y, sobre todo, <strong>radiante</strong>. Yo todavía no sabía tu nombre, pero ya sabía que había algo en ti que quería volver a mirar.</p><span class="hand-note">la primera escena que guardé</span></div><figure class="step-photo"><img src="moments/01-oficina.jpg" alt="Ella en un día de oficina" loading="lazy"><figcaption>antes de conocerte</figcaption></figure></article>
+          <article class="story-step reveal"><div class="step-copy"><span class="step-number">02</span><h3>La excusa fue una capacitación.</h3><p>La vida nos sentó cerca y por fin pude hablar contigo. Lo que era una imagen desde lejos se convirtió en una conversación que quería alargar.</p><span class="hand-note">aquí empezó el “¿y si…?”</span></div><figure class="step-photo"><img src="moments/02-capacitacion.jpg" alt="La pareja compartiendo una salida" loading="lazy"><figcaption>la conversación</figcaption></figure></article>
+          <article class="story-step reveal"><div class="step-copy"><span class="step-number">03</span><h3>Después te invité a correr.</h3><p>Entre pasos, respiraciones y charlas, empezamos a conocernos de verdad. Nuestro primer kilómetro juntos no fue perfecto: fue mejor, porque fue nuestro.</p><span class="hand-note">spoiler: quería repetirlo</span></div><figure class="step-photo"><img src="moments/03-primer-rato.jpg" alt="La pareja al aire libre" loading="lazy"><figcaption>primeros ratos</figcaption></figure></article>
+          <article class="story-step reveal"><div class="step-copy"><span class="step-number">04</span><h3>Y la ruta se volvió enorme.</h3><p>De pronto cabían montañas, ferias, bicicletas, playas, besos y esos silencios cómodos donde no hace falta decir nada para estar bien.</p><span class="hand-note">mi lugar favorito sigue siendo contigo</span></div><figure class="step-photo"><img src="moments/05-aventura.jpg" alt="La pareja disfrutando una vista panorámica" loading="lazy"><figcaption>el mundo se ve mejor contigo</figcaption></figure></article>
+        </section>
+
+        <section class="ribbon-section" id="recuerdos" aria-labelledby="ribbon-title">
+          <div class="ribbon-inner">
+            <div class="ribbon-intro reveal"><div><p class="section-kicker">página 02 · cinta de recuerdos</p><h2 id="ribbon-title">Pequeñas pruebas de que sí pasó.</h2></div><p>Desliza la cinta. Toca cualquier postal. Algunas tienen arena, otras luces, pero todas tienen un pedacito de nosotros.</p></div>
+            <div class="ribbon-tabs" role="toolbar" aria-label="Filtrar recuerdos"><button class="ribbon-tab" type="button" data-filter="all" aria-pressed="true">todo el álbum</button><button class="ribbon-tab" type="button" data-filter="inicio" aria-pressed="false">el comienzo</button><button class="ribbon-tab" type="button" data-filter="aventura" aria-pressed="false">aventuras</button><button class="ribbon-tab" type="button" data-filter="locuras" aria-pressed="false">planes improvisados</button></div>
+            <div class="memory-ribbon" id="memory-ribbon">
+              <button class="memory-card" type="button" data-category="inicio" data-image="moments/01-oficina.jpg" data-caption="La primera mirada que se quedó conmigo."><img src="moments/01-oficina.jpg" alt="Ella en la oficina" loading="lazy"><span class="memory-caption">la mirada<small>comienzo</small></span></button>
+              <button class="memory-card" type="button" data-category="inicio" data-image="moments/02-capacitacion.jpg" data-caption="La conversación que abrió este camino."><img src="moments/02-capacitacion.jpg" alt="La pareja sonriendo durante una salida" loading="lazy"><span class="memory-caption">la conversación<small>comienzo</small></span></button>
+              <button class="memory-card" type="button" data-category="inicio" data-image="moments/03-primer-rato.jpg" data-caption="Ese primer rato en que todo se sintió natural."><img src="moments/03-primer-rato.jpg" alt="La pareja al aire libre" loading="lazy"><span class="memory-caption">primeros ratos<small>comienzo</small></span></button>
+              <button class="memory-card" type="button" data-category="inicio" data-image="moments/04-paseo.jpg" data-caption="El primer paseo de muchos."><img src="moments/04-paseo.jpg" alt="La pareja junto a una fuente" loading="lazy"><span class="memory-caption">vamos a dar una vuelta<small>comienzo</small></span></button>
+              <button class="memory-card" type="button" data-category="aventura" data-image="moments/05-aventura.jpg" data-caption="Una vista enorme y nosotros sintiéndonos invencibles."><img src="moments/05-aventura.jpg" alt="La pareja ante una vista panorámica" loading="lazy"><span class="memory-caption">modo aventura<small>juntos</small></span></button>
+              <button class="memory-card" type="button" data-category="aventura" data-image="moments/06-beso.jpg" data-caption="Hay recuerdos que se cuentan mejor con un beso."><img src="moments/06-beso.jpg" alt="La pareja dándose un beso" loading="lazy"><span class="memory-caption">ese beso<small>aventuras</small></span></button>
+              <button class="memory-card" type="button" data-category="aventura" data-image="moments/07-montana.jpg" data-caption="Altura, atardecer y la compañía correcta."><img src="moments/07-montana.jpg" alt="La pareja en una terraza con vista al atardecer" loading="lazy"><span class="memory-caption">kilómetros de cielo<small>aventuras</small></span></button>
+              <button class="memory-card" type="button" data-category="aventura" data-image="moments/08-playa.jpg" data-caption="Cuando el plan termina frente al mar y nadie quiere irse."><img src="moments/08-playa.jpg" alt="Ella junto al mar" loading="lazy"><span class="memory-caption">frente al mar<small>aventuras</small></span></button>
+              <button class="memory-card" type="button" data-category="aventura" data-image="moments/09-playa-beso.jpg" data-caption="Sal, olas y nosotros haciendo hogar en cualquier lugar."><img src="moments/09-playa-beso.jpg" alt="La pareja besándose en la playa" loading="lazy"><span class="memory-caption">con sal y besos<small>aventuras</small></span></button>
+              <button class="memory-card" type="button" data-category="locuras" data-image="moments/10-bicicletas.jpg" data-caption="Un plan improvisado que terminó siendo una noche para recordar."><img src="moments/10-bicicletas.jpg" alt="La pareja en bicicletas de noche" loading="lazy"><span class="memory-caption">sin plan, con ganas<small>locuras</small></span></button>
+              <button class="memory-card" type="button" data-category="locuras" data-image="moments/11-feria.jpg" data-caption="Luces, gritos y esa felicidad de hacer el ridículo juntos."><img src="moments/11-feria.jpg" alt="La pareja en un juego de feria" loading="lazy"><span class="memory-caption">sube, que no pasa nada<small>locuras</small></span></button>
+              <button class="memory-card" type="button" data-category="locuras" data-image="moments/12-pies-playa.jpg" data-caption="Una pausa junto al mar, de esas que se quedan para siempre."><img src="moments/12-pies-playa.jpg" alt="Los pies de la pareja en la playa" loading="lazy"><span class="memory-caption">pausa con arena<small>locuras</small></span></button>
             </div>
-            <div>
-              <h2 id="story-title">De los pasillos de la empresa a una aventura que apenas comienza.</h2>
-              <p>Hay caminos que empiezan mucho antes de que uno se dé cuenta. El nuestro comenzó con una mirada, una conversación y una invitación.</p>
-            </div>
-          </div>
-
-          <div class="route">
-            <article class="stop reveal" data-stop="1">
-              <div class="stop-marker" aria-hidden="true">01</div>
-              <div class="stop-copy">
-                <p class="stop-kicker">Los pasillos</p>
-                <h3>La primera vez que te vi.</h3>
-                <p>Te veía en los pasillos de la empresa, caminando muy seria y enojada, pero sobre todo radiante, bella e imponente.</p>
-                <span class="route-note">No sabía que ya había comenzado el viaje.</span>
-              </div>
-            </article>
-
-            <article class="stop reveal" data-stop="2">
-              <div class="stop-marker" aria-hidden="true">02</div>
-              <div class="stop-copy">
-                <p class="stop-kicker">La capacitación</p>
-                <h3>El día que por fin te conocí.</h3>
-                <p>Luego llegó una capacitación en tu área. Ahí empecé a hablar contigo y aquella imagen de los pasillos se convirtió en una conversación que quería seguir descubriendo.</p>
-                <span class="route-note">El camino dejó de ser solo una mirada.</span>
-              </div>
-            </article>
-
-            <article class="stop reveal" data-stop="3">
-              <div class="stop-marker" aria-hidden="true">03</div>
-              <div class="stop-copy">
-                <p class="stop-kicker">La primera ruta</p>
-                <h3>Después te invité a correr.</h3>
-                <p>Aceptaste. Y entre pasos, respiraciones y conversaciones, fue donde empezamos a conocernos más, sin la prisa de la oficina y con espacio para ser nosotros.</p>
-                <span class="route-note">Nuestro primer kilómetro juntos.</span>
-              </div>
-            </article>
-
-            <article class="stop reveal" data-stop="4">
-              <div class="stop-marker" aria-hidden="true">04</div>
-              <div class="stop-copy">
-                <p class="stop-kicker">Lo que sigue</p>
-                <h3>Y ahora quiero seguir recorriendo contigo.</h3>
-                <p>Si una mirada, una capacitación y una carrera nos trajeron hasta aquí, imagina todos los lugares, playas y aventuras que todavía nos esperan.</p>
-                <span class="route-note">La mejor parte de la ruta aún está por comenzar.</span>
-              </div>
-            </article>
           </div>
         </section>
 
-        <section class="memories" id="recuerdos" data-stop="5" aria-labelledby="memories-title">
-          <div class="memories-heading reveal">
-            <div>
-              <p class="route-label">Ruta 02 · Recuerdos</p>
-              <h2 id="memories-title">Lo que pasa entre kilómetro y kilómetro.</h2>
-            </div>
-            <p>Hay momentos que no cabían en una sola frase. Así que los dejamos aquí, para volver a ellos cuando queramos.</p>
-          </div>
-
-          <div class="memory-controls" role="toolbar" aria-label="Filtrar recuerdos">
-            <button class="filter-button" type="button" data-filter="all" aria-pressed="true">Todos</button>
-            <button class="filter-button" type="button" data-filter="inicio" aria-pressed="false">El comienzo</button>
-            <button class="filter-button" type="button" data-filter="aventura" aria-pressed="false">Aventuras</button>
-            <button class="filter-button" type="button" data-filter="locuras" aria-pressed="false">Locuras</button>
-            <button class="surprise-button" id="surprise-button" type="button">Abrir recuerdo sorpresa ✨</button>
-          </div>
-
-          <div class="memory-grid" id="memory-grid">
-            <button class="memory-card" type="button" data-category="inicio" data-image="moments/01-oficina.jpg" data-caption="Donde todo empezó: una mirada entre pasillos y días de oficina.">
-              <img src="moments/01-oficina.jpg" alt="Retrato de ella en la oficina" loading="lazy">
-              <span class="memory-tag">Donde todo empezó<small>El comienzo</small></span>
-            </button>
-            <button class="memory-card" type="button" data-category="inicio" data-image="moments/02-capacitacion.jpg" data-caption="La capacitación que convirtió una imagen bonita en una conversación.">
-              <img src="moments/02-capacitacion.jpg" alt="La pareja sonriendo durante una salida" loading="lazy">
-              <span class="memory-tag">La capacitación<small>El comienzo</small></span>
-            </button>
-            <button class="memory-card" type="button" data-category="inicio" data-image="moments/03-primer-rato.jpg" data-caption="Ese primer rato en que la curiosidad empezó a ganarle a los nervios.">
-              <img src="moments/03-primer-rato.jpg" alt="La pareja compartiendo un momento al aire libre" loading="lazy">
-              <span class="memory-tag">Primeros ratos<small>El comienzo</small></span>
-            </button>
-            <button class="memory-card" type="button" data-category="inicio" data-image="moments/04-paseo.jpg" data-caption="Una caminata, una charla y la sensación de que esto iba en serio.">
-              <img src="moments/04-paseo.jpg" alt="La pareja junto a una fuente" loading="lazy">
-              <span class="memory-tag">La primera ruta<small>El comienzo</small></span>
-            </button>
-            <button class="memory-card" type="button" data-category="aventura" data-image="moments/05-aventura.jpg" data-caption="De la oficina al mundo: cada paseo contigo se siente como una aventura.">
-              <img src="moments/05-aventura.jpg" alt="La pareja disfrutando una vista panorámica" loading="lazy">
-              <span class="memory-tag">Modo aventura<small>Juntos</small></span>
-            </button>
-            <button class="memory-card" type="button" data-category="aventura" data-image="moments/06-beso.jpg" data-caption="La prueba de que algunos recuerdos se explican mejor con un beso.">
-              <img src="moments/06-beso.jpg" alt="La pareja dándose un beso con una vista al lago" loading="lazy">
-              <span class="memory-tag">Ese beso<small>Juntos</small></span>
-            </button>
-            <button class="memory-card" type="button" data-category="aventura" data-image="moments/07-montana.jpg" data-caption="Altura, atardecer y dos personas que siempre encuentran el mismo mirador.">
-              <img src="moments/07-montana.jpg" alt="La pareja en una terraza con vista al atardecer" loading="lazy">
-              <span class="memory-tag">Kilómetros de cielo<small>Aventuras</small></span>
-            </button>
-            <button class="memory-card" type="button" data-category="aventura" data-image="moments/08-playa.jpg" data-caption="Cuando la ruta termina frente al mar, pero las ganas de seguir no terminan.">
-              <img src="moments/08-playa.jpg" alt="Ella en la playa junto a una formación rocosa" loading="lazy">
-              <span class="memory-tag">Frente al mar<small>Aventuras</small></span>
-            </button>
-            <button class="memory-card" type="button" data-category="aventura" data-image="moments/09-playa-beso.jpg" data-caption="Sal, olas y nosotros haciendo de cualquier lugar nuestro lugar.">
-              <img src="moments/09-playa-beso.jpg" alt="La pareja besándose en la playa" loading="lazy">
-              <span class="memory-tag">Con sal y besos<small>Aventuras</small></span>
-            </button>
-            <button class="memory-card" type="button" data-category="locuras" data-image="moments/10-bicicletas.jpg" data-caption="Dos bicicletas, una noche y la certeza de que contigo hasta lo cotidiano se vuelve planazo.">
-              <img src="moments/10-bicicletas.jpg" alt="La pareja paseando en bicicleta de noche" loading="lazy">
-              <span class="memory-tag">Plan improvisado<small>Locuras</small></span>
-            </button>
-            <button class="memory-card" type="button" data-category="locuras" data-image="moments/11-feria.jpg" data-caption="Gritos, luces y risas: nuestro talento especial para divertirnos juntos.">
-              <img src="moments/11-feria.jpg" alt="La pareja en un juego de feria" loading="lazy">
-              <span class="memory-tag">Sin miedo al juego<small>Locuras</small></span>
-            </button>
-            <button class="memory-card" type="button" data-category="locuras" data-image="moments/12-pies-playa.jpg" data-caption="La clase de tranquilidad que solo aparece cuando estamos juntos frente al mar.">
-              <img src="moments/12-pies-playa.jpg" alt="Los pies de la pareja sobre una playa de piedras" loading="lazy">
-              <span class="memory-tag">Pausa con arena<small>Locuras</small></span>
-            </button>
-          </div>
-
-          <div class="video-moments" aria-label="Videos de nuestros recuerdos">
-            <article class="video-card">
-              <video controls playsinline preload="metadata"><source src="moments/01-recuerdo.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video>
-              <p>Un momento que todavía nos hace sonreír.</p>
-            </article>
-            <article class="video-card">
-              <video controls playsinline preload="metadata"><source src="moments/02-aventura.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video>
-              <p>La aventura siempre se disfruta más contigo.</p>
-            </article>
-            <article class="video-card">
-              <video controls playsinline preload="metadata"><source src="moments/03-momento.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video>
-              <p>Otro recuerdo para guardar en nuestra ruta.</p>
-            </article>
+        <section class="video-section" aria-labelledby="video-title">
+          <div class="video-intro reveal"><div><p class="section-kicker">página 03 · en movimiento</p><h2 id="video-title">También tenemos versión película.</h2></div><p>Estos pedacitos se reproducen solos, como esos recuerdos que aparecen sin avisar y nos sacan una sonrisa.</p></div>
+          <div class="film-strip">
+            <article class="film-card reveal"><video autoplay muted loop playsinline preload="metadata" aria-label="Video de un recuerdo juntos"><source src="moments/01-recuerdo.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video><p>un día cualquiera, pero contigo</p></article>
+            <article class="film-card reveal"><video autoplay muted loop playsinline preload="metadata" aria-label="Video de una aventura juntos"><source src="moments/02-aventura.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video><p>la aventura nos queda bien</p></article>
+            <article class="film-card reveal"><video autoplay muted loop playsinline preload="metadata" aria-label="Video de un momento especial"><source src="moments/03-momento.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video><p>otra escena para guardar</p></article>
           </div>
         </section>
 
-        <dialog id="memory-dialog" aria-labelledby="dialog-caption">
-          <button class="dialog-close" id="dialog-close" type="button" aria-label="Cerrar recuerdo">×</button>
-          <img class="dialog-image" id="dialog-image" alt="">
-          <p class="dialog-caption" id="dialog-caption"></p>
-        </dialog>
-
-        <section class="finale" data-stop="5" aria-labelledby="finale-title">
-          <div class="finale-content reveal">
-            <p class="eyebrow">La parada más importante</p>
-            <h2 id="finale-title">¿Quieres ser mi novia?</h2>
-            <p>Porque si esto fue apenas el primer kilómetro, quiero descubrir contigo todo lo que viene después.</p>
-            <div class="answer-row" role="group" aria-label="Respuesta">
-              <button class="answer" type="button" data-answer="yes">Sí, quiero 🤍</button>
-              <button class="answer secondary" type="button" data-answer="also-yes">Claro que sí</button>
-            </div>
-            <p class="reveal-message" id="reveal-message" role="status"></p>
-          </div>
+        <section class="finale" aria-labelledby="finale-title">
+          <div class="reveal"><p class="section-kicker">última página · por ahora</p><h2 id="finale-title">¿Quieres seguir siendo mi aventura favorita?</h2><p>Yo pongo los planes malos, los besos inesperados y las ganas de irnos lejos. Tú solo dime que sí y seguimos llenando esta cinta.</p><div class="answer-row" role="group" aria-label="Respuesta"><button class="answer" type="button" data-answer="yes">Sí, obvio 🤍</button><button class="answer secondary" type="button" data-answer="always">Siempre contigo</button></div><p class="reveal-message" id="reveal-message" role="status"></p></div>
         </section>
       </main>
 
-      <footer>Hecho para una ruta con <span>muchas aventuras</span> por delante.</footer>
+      <footer>hecho con recuerdos, cariño y ganas de <span>seguir dando vueltas contigo</span>.</footer>
     </div>
+
+    <dialog id="memory-dialog" aria-labelledby="dialog-caption"><button class="dialog-close" id="dialog-close" type="button" aria-label="Cerrar recuerdo">×</button><img class="dialog-image" id="dialog-image" alt=""><p class="dialog-caption" id="dialog-caption"></p></dialog>
 
     <script>
       const audio = document.querySelector('#background-audio');
-      const playButton = document.querySelector('#play-button');
-      const compactPlayer = document.querySelector('#compact-player');
-      const playIcon = document.querySelector('#play-icon');
-      const musicStatus = document.querySelector('#music-status');
-      const audioNote = document.querySelector('#audio-note');
-      const audioProgress = document.querySelector('#audio-progress');
-      const elapsed = document.querySelector('#elapsed');
-      const duration = document.querySelector('#duration');
-      const routeLabel = document.querySelector('#route-label');
-      const meterFill = document.querySelector('#meter-fill');
+      const musicButton = document.querySelector('#music-button');
+      const musicIcon = document.querySelector('#music-icon');
+      const musicLabel = document.querySelector('#music-label');
       const revealMessage = document.querySelector('#reveal-message');
       audio.volume = .42;
-
-      const formatTime = (seconds) => {
-        if (!Number.isFinite(seconds)) return '--:--';
-        const minutes = Math.floor(seconds / 60);
-        const remainder = Math.floor(seconds % 60).toString().padStart(2, '0');
-        return minutes + ':' + remainder;
-      };
-
       const setPlayingState = (isPlaying) => {
-        playButton.classList.toggle('is-playing', isPlaying);
-        compactPlayer.classList.toggle('is-playing', isPlaying);
-        playButton.setAttribute('aria-pressed', String(isPlaying));
-        compactPlayer.setAttribute('aria-pressed', String(isPlaying));
-        playButton.setAttribute('aria-label', isPlaying ? 'Pausar la canción' : 'Reproducir la canción');
-        compactPlayer.setAttribute('aria-label', isPlaying ? 'Pausar la canción' : 'Reproducir la canción');
-        playIcon.textContent = isPlaying ? 'Ⅱ' : '▶';
-        musicStatus.textContent = isPlaying ? 'Reproduciendo' : 'Dale play para comenzar';
-        audioNote.textContent = isPlaying ? 'La ruta comienza aquí.' : 'La música empezará cuando presiones el botón.';
+        musicButton.classList.toggle('is-playing', isPlaying);
+        musicButton.setAttribute('aria-pressed', String(isPlaying));
+        musicButton.setAttribute('aria-label', isPlaying ? 'Pausar nuestra canción' : 'Reproducir nuestra canción');
+        musicIcon.textContent = isPlaying ? 'Ⅱ' : '▶';
+        musicLabel.textContent = isPlaying ? 'pausar nuestro soundtrack' : 'ponerle play a nuestro soundtrack';
       };
-
-      const toggleAudio = async () => {
-        if (audio.paused) {
-          try {
-            await audio.play();
-          } catch (error) {
-            musicStatus.textContent = 'Toca de nuevo para reproducir';
-          }
-        } else {
-          audio.pause();
-        }
-      };
-
-      playButton.addEventListener('click', toggleAudio);
-      compactPlayer.addEventListener('click', toggleAudio);
+      musicButton.addEventListener('click', async () => {
+        if (audio.paused) { try { await audio.play(); } catch (error) { musicLabel.textContent = 'toca otra vez para escuchar'; } } else audio.pause();
+      });
       audio.addEventListener('play', () => setPlayingState(true));
       audio.addEventListener('pause', () => setPlayingState(false));
-      audio.addEventListener('loadedmetadata', () => { duration.textContent = formatTime(audio.duration); });
-      audio.addEventListener('timeupdate', () => {
-        elapsed.textContent = formatTime(audio.currentTime);
-        audioProgress.value = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
-      });
-      audioProgress.addEventListener('input', () => {
-        if (audio.duration) audio.currentTime = (Number(audioProgress.value) / 100) * audio.duration;
-      });
-      audio.addEventListener('error', () => {
-        playButton.disabled = true;
-        compactPlayer.disabled = true;
-        musicStatus.textContent = 'No se pudo cargar la música';
-        audioNote.textContent = 'Revisa el archivo de audio para volver a intentarlo.';
-      });
 
       const memoryCards = [...document.querySelectorAll('.memory-card')];
       const filterButtons = [...document.querySelectorAll('[data-filter]')];
       const memoryDialog = document.querySelector('#memory-dialog');
       const dialogImage = document.querySelector('#dialog-image');
       const dialogCaption = document.querySelector('#dialog-caption');
-
       const applyFilter = (filter) => {
-        filterButtons.forEach((button) => {
-          button.setAttribute('aria-pressed', String(button.dataset.filter === filter));
-        });
-        memoryCards.forEach((card) => {
-          card.classList.toggle('is-hidden', filter !== 'all' && card.dataset.category !== filter);
-        });
+        filterButtons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.filter === filter)));
+        memoryCards.forEach((card) => card.classList.toggle('is-hidden', filter !== 'all' && card.dataset.category !== filter));
       };
-
-      const openMemory = (card) => {
-        dialogImage.src = card.dataset.image;
-        dialogImage.alt = card.querySelector('img').alt;
-        dialogCaption.textContent = card.dataset.caption;
-        memoryDialog.showModal();
-      };
-
-      filterButtons.forEach((button) => {
-        button.addEventListener('click', () => applyFilter(button.dataset.filter));
-      });
-      memoryCards.forEach((card) => {
-        card.addEventListener('click', () => openMemory(card));
-      });
+      const openMemory = (card) => { dialogImage.src = card.dataset.image; dialogImage.alt = card.querySelector('img').alt; dialogCaption.textContent = card.dataset.caption; memoryDialog.showModal(); };
+      filterButtons.forEach((button) => button.addEventListener('click', () => applyFilter(button.dataset.filter)));
+      memoryCards.forEach((card) => card.addEventListener('click', () => openMemory(card)));
       document.querySelector('#dialog-close').addEventListener('click', () => memoryDialog.close());
-      memoryDialog.addEventListener('click', (event) => {
-        if (event.target === memoryDialog) memoryDialog.close();
-      });
-      document.querySelector('#surprise-button').addEventListener('click', () => {
-        const visibleCards = memoryCards.filter((card) => !card.classList.contains('is-hidden'));
-        const card = visibleCards[Math.floor(Math.random() * visibleCards.length)] || memoryCards[0];
-        openMemory(card);
-      });
+      memoryDialog.addEventListener('click', (event) => { if (event.target === memoryDialog) memoryDialog.close(); });
 
-      const observedSections = [...document.querySelectorAll('.opening, .story-heading, .stop, .memories, .finale')];
       const revealElements = [...document.querySelectorAll('.reveal:not(.is-visible)')];
-      const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: .15 });
+      const revealObserver = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); revealObserver.unobserve(entry.target); } }); }, { threshold: .12 });
       revealElements.forEach((element) => revealObserver.observe(element));
-
-      const routeObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const stop = entry.target.dataset.stop;
-          const current = stop ? Number(stop) : entry.target.classList.contains('finale') ? 5 : 1;
-          routeLabel.textContent = String(current).padStart(2, '0') + ' / 05';
-          meterFill.style.width = (current / 5 * 100) + '%';
-        });
-      }, { rootMargin: '-35% 0px -50% 0px', threshold: 0 });
-      observedSections.forEach((section) => routeObserver.observe(section));
+      const videos = [...document.querySelectorAll('video[autoplay]')];
+      videos.forEach((video) => { video.muted = true; video.play().catch(() => {}); });
+      const videoObserver = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (entry.isIntersecting) entry.target.play().catch(() => {}); else entry.target.pause(); }); }, { threshold: .25 });
+      videos.forEach((video) => videoObserver.observe(video));
 
       document.querySelectorAll('[data-answer]').forEach((button) => {
         button.addEventListener('click', () => {
-          revealMessage.textContent = 'Entonces queda decidido: este es el comienzo de nuestra mejor aventura. ✨';
+          revealMessage.textContent = 'Entonces queda escrito: tú y yo, con muchas vueltas más por delante. ✨';
           revealMessage.classList.add('is-visible');
-          for (let index = 0; index < 12; index += 1) {
-            const heart = document.createElement('span');
-            heart.className = 'heart';
-            heart.textContent = index % 2 ? '✦' : '♥';
-            heart.style.left = (50 + (Math.random() * 36 - 18)) + '%';
-            heart.style.top = (58 + (Math.random() * 10 - 5)) + '%';
-            heart.style.animationDelay = (Math.random() * .35) + 's';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 2200);
-          }
+          for (let index = 0; index < 14; index += 1) { const heart = document.createElement('span'); heart.className = 'heart'; heart.textContent = index % 2 ? '✦' : '♥'; heart.style.left = (50 + (Math.random() * 36 - 18)) + '%'; heart.style.top = (58 + (Math.random() * 10 - 5)) + '%'; heart.style.animationDelay = (Math.random() * .35) + 's'; document.body.appendChild(heart); setTimeout(() => heart.remove(), 2200); }
         });
       });
     </script>
