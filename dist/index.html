@@ -107,15 +107,17 @@
       .step-photo img { display: block; width: 100%; height: 17rem; object-fit: cover; }
       .step-photo--route img { height: 23rem; object-position: 50% 18%; }
       .step-photo figcaption { position: absolute; right: .8rem; bottom: .55rem; left: .8rem; color: var(--navy); font-family: "Segoe Print", "Bradley Hand", cursive; font-size: .82rem; font-weight: 700; }
-      .travel-finish { position: relative; margin: 1rem 0 0; padding: .6rem 0 0; }
+      .travel-finish { position: relative; margin: 1rem 0 0; padding: .6rem 0 7.5rem; }
       .travel-line { display: block; width: 100%; height: 7rem; overflow: visible; }
       .travel-line path { fill: none; stroke: var(--dust); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 2 13; }
       .travel-line circle { fill: var(--sun); stroke: var(--navy); stroke-width: 2; }
-      .travel-line .plane { fill: var(--cream); stroke: var(--navy); stroke-width: 2.5; stroke-linejoin: round; }
+      .travel-line .bike-frame { fill: none; stroke: var(--navy); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: none; }
+      .travel-line .bike-wheel { fill: var(--cream); stroke: var(--navy); stroke-width: 3; }
+      .travel-line .bike-accent { fill: var(--sun); stroke: var(--navy); stroke-width: 2; }
       .finish-note { display: block; margin-top: -1.5rem; color: var(--dust-dark); font-family: "Segoe Print", "Bradley Hand", cursive; font-size: .95rem; font-weight: 700; text-align: right; transform: rotate(-3deg); }
-      .ride-sticker { position: absolute; right: 2%; bottom: -2.2rem; z-index: 2; width: 8.4rem; margin: 0; padding: .35rem .35rem 1.5rem; background: var(--cream); box-shadow: var(--shadow); transform: rotate(5deg); }
-      .ride-sticker img { display: block; width: 100%; height: 5.8rem; object-fit: cover; object-position: 50% 50%; filter: saturate(.8); }
-      .ride-sticker figcaption { position: absolute; right: .45rem; bottom: .3rem; left: .45rem; color: var(--navy); font-family: "Segoe Print", "Bradley Hand", cursive; font-size: .66rem; font-weight: 700; text-align: center; }
+      .ride-sticker { position: absolute; left: 3%; right: auto; bottom: -1rem; z-index: 2; width: 12.5rem; margin: 0; padding: .45rem .45rem 1.8rem; background: var(--cream); box-shadow: var(--shadow); transform: rotate(-5deg); }
+      .ride-sticker img { display: block; width: 100%; height: 8.6rem; object-fit: cover; object-position: 50% 50%; filter: saturate(.82); }
+      .ride-sticker figcaption { position: absolute; right: .55rem; bottom: .35rem; left: .55rem; color: var(--navy); font-family: "Segoe Print", "Bradley Hand", cursive; font-size: .74rem; font-weight: 700; text-align: center; }
 
       .ribbon-section { position: relative; padding: 4rem 0 4.5rem; background: var(--navy); transform: rotate(-1deg) scale(1.02); }
       .ribbon-section::before, .ribbon-section::after { position: absolute; right: -2rem; left: -2rem; height: 1rem; content: ""; background: var(--paper); }
@@ -207,8 +209,11 @@
         .ribbon-section { padding: 3.6rem 0 4rem; }
         .ribbon-inner { width: min(100% - 1.4rem, 620px); }
         .memory-ribbon { margin-right: -.7rem; margin-left: -.7rem; grid-auto-columns: minmax(13rem, 17rem); }
-        .travel-finish { margin-top: 0; }
-        .ride-sticker { position: relative; right: auto; bottom: auto; margin: .2rem 0 0 auto; }
+        .travel-finish { margin-top: 0; padding-bottom: 1.2rem; }
+        .travel-line { height: 8rem; }
+        .ride-sticker { position: relative; left: 0; right: auto; bottom: auto; width: min(75vw, 17rem); margin: .65rem auto 0 .15rem; padding: .5rem .5rem 2rem; transform: rotate(-4deg); }
+        .ride-sticker img { height: 11.5rem; object-position: 50% 48%; }
+        .ride-sticker figcaption { font-size: .8rem; }
         .video-section { padding-top: 5rem; }
         .film-strip { grid-template-columns: 1fr; gap: 1.4rem; }
         .film-card, .film-card:nth-child(2), .film-card:nth-child(3) { max-width: 22rem; margin: 0 auto; transform: rotate(-2deg); }
@@ -254,7 +259,7 @@
           <article class="story-step reveal"><div class="step-copy"><span class="step-number">02</span><h3>La excusa fue una capacitación.</h3><p>La vida nos sentó cerca y por fin pude hablar contigo. Lo que era una imagen desde lejos se convirtió en una conversación que quería alargar.</p><span class="hand-note">aquí empezó el “¿y si…?”</span></div><figure class="step-photo"><img src="moments/02-capacitacion.jpg" alt="La pareja compartiendo una salida" loading="lazy"><figcaption>la conversación</figcaption></figure></article>
           <article class="story-step reveal"><div class="step-copy"><span class="step-number">03</span><h3>Después te invité a correr.</h3><p>Entre pasos, respiraciones y charlas, empezamos a conocernos de verdad. Nuestro primer kilómetro juntos no fue perfecto: fue mejor, porque fue nuestro.</p><span class="hand-note">spoiler: quería repetirlo</span></div><figure class="step-photo"><img src="moments/03-primer-rato.jpg" alt="La pareja al aire libre" loading="lazy"><figcaption>primeros ratos</figcaption></figure></article>
           <article class="story-step reveal"><div class="step-copy"><span class="step-number">04</span><h3>Y la ruta se volvió enorme.</h3><p>De pronto cabían montañas, ferias, bicicletas, playas, besos y esos silencios cómodos donde no hace falta decir nada para estar bien.</p><span class="hand-note">mi lugar favorito sigue siendo contigo</span></div><figure class="step-photo step-photo--route"><img src="moments/05-aventura.jpg" alt="La pareja disfrutando una vista panorámica" loading="lazy"><figcaption>el mundo se ve mejor contigo</figcaption></figure></article>
-          <div class="travel-finish" aria-hidden="true"><svg class="travel-line" viewBox="0 0 1000 120" preserveAspectRatio="none"><path d="M35 65 C190 15 280 97 430 53 S700 18 900 53"/><circle cx="35" cy="65" r="8"/><circle cx="290" cy="65" r="8"/><circle cx="575" cy="40" r="8"/><circle cx="900" cy="53" r="8"/><g transform="translate(885 25) rotate(9)"><path class="plane" d="M0 23 70 0 49 48 35 28 0 23Z"/><path class="plane" d="m35 28 35-28"/></g></svg><span class="finish-note">y todavía nos queda mucho cielo</span><figure class="ride-sticker"><img src="moments/10-bicicletas.jpg" alt="" loading="lazy"><figcaption>pedaleando juntos</figcaption></figure></div>
+          <div class="travel-finish" aria-hidden="true"><svg class="travel-line" viewBox="0 0 1000 120" preserveAspectRatio="none"><path id="travel-route" d="M35 65 C190 15 280 97 430 53 S700 18 900 53"/><circle cx="35" cy="65" r="8"/><circle cx="290" cy="65" r="8"/><circle cx="575" cy="40" r="8"/><circle cx="900" cy="53" r="8"/><g><circle class="bike-wheel" cx="-18" cy="10" r="11"/><circle class="bike-wheel" cx="18" cy="10" r="11"/><path class="bike-frame" d="M-18 10 L-6 -8 L5 10 L-18 10 M-6 -8 L12 -8 L18 10 M-6 -8 L-10 -15 M-14 -15 L-6 -15 M12 -8 L16 -16 M12 -16 L21 -16"/><circle class="bike-accent" cx="-6" cy="-8" r="3"/><animateMotion dur="6.5s" repeatCount="indefinite" rotate="auto" keyTimes="0;0.5;1" keySplines=".42 0 .58 1;.42 0 .58 1" calcMode="spline"><mpath href="#travel-route"/></animateMotion></g></svg><span class="finish-note">y todavía nos queda mucho cielo</span><figure class="ride-sticker"><img src="moments/10-bicicletas.jpg" alt="" loading="lazy"><figcaption>pedaleando juntos</figcaption></figure></div>
         </section>
 
         <section class="ribbon-section" id="recuerdos" aria-labelledby="ribbon-title">
