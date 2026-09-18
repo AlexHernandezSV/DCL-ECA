@@ -61,7 +61,11 @@
       .cover-photo img { display: block; width: 100%; height: clamp(19rem, 50vw, 31rem); object-fit: cover; }
       .cover-photo figcaption { margin-top: .75rem; color: var(--navy); font-family: "Segoe Print", "Bradley Hand", cursive; font-size: 1.1rem; font-weight: 700; }
       .script { color: var(--dust); font-family: "Segoe Print", "Bradley Hand", cursive; font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 700; line-height: .95; }
-      .cover h1 { max-width: 10ch; margin: .25rem auto 1rem; color: var(--navy); font-family: Georgia, serif; font-size: clamp(3rem, 8vw, 6.8rem); font-weight: 500; line-height: .9; letter-spacing: -.07em; }
+      .cover-note { position: relative; display: inline-block; padding: .55rem 1.5rem; color: var(--dust-dark); transform: rotate(-2deg); }
+      .cover-note::before, .cover-note::after { position: absolute; width: 4.8rem; height: 1rem; content: ""; background: rgba(237, 186, 103, .72); }
+      .cover-note::before { top: -.35rem; left: 16%; transform: rotate(-5deg); }
+      .cover-note::after { right: 10%; bottom: -.25rem; background: rgba(164, 182, 170, .72); transform: rotate(4deg); }
+      .cover h1 { max-width: 11ch; margin: .5rem auto 1rem; color: var(--navy); font-family: Georgia, serif; font-size: clamp(3rem, 8vw, 6.8rem); font-weight: 500; line-height: .9; letter-spacing: -.07em; }
       .cover-copy { max-width: 34rem; margin: 0 auto 1.5rem; color: var(--ink); font-size: 1.08rem; }
       .cover-copy strong { color: var(--dust-dark); }
       .cover-footer { display: flex; align-items: center; justify-content: center; gap: .9rem; color: var(--navy); font-family: "Segoe Print", "Bradley Hand", cursive; font-size: .92rem; font-weight: 700; }
@@ -83,6 +87,8 @@
       .story-path::before { box-shadow: 0 9rem 0 var(--sun), 0 18rem 0 var(--sun), 0 27rem 0 var(--sun); }
       .story-path::before { top: 0; }
       .story-path::after { bottom: 0; }
+      .route-lovers { position: relative; z-index: 2; width: min(35rem, 72%); margin: -1rem auto 1rem; transform: rotate(-2deg); filter: drop-shadow(0 .7rem .55rem rgba(16, 47, 70, .13)); }
+      .route-lovers img { display: block; width: 100%; height: auto; }
       .story-step { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 8vw, 8rem); align-items: center; min-height: 18rem; margin: .4rem 0; }
       .story-step:nth-of-type(even) .step-copy { order: 2; }
       .story-step:nth-of-type(even) .step-photo { order: 1; }
@@ -185,6 +191,7 @@
         .story-intro, .ribbon-intro, .video-intro { display: block; }
         .story-intro p:last-child, .ribbon-intro p:last-child, .video-intro p:last-child { margin-top: 1rem; }
         .story-path { left: 1.1rem; top: 11rem; transform: rotate(1deg); }
+        .route-lovers { width: 100%; margin: -.4rem auto 1rem; transform: rotate(-1deg); }
         .story-step, .story-step:nth-of-type(even) { grid-template-columns: 3rem minmax(0, 1fr); gap: .7rem; min-height: 0; margin: 2rem 0 4rem; }
         .story-step:nth-of-type(even) .step-copy, .story-step:nth-of-type(even) .step-photo { order: initial; }
         .step-copy { grid-column: 2; grid-row: 1; padding: 0; }
@@ -210,11 +217,6 @@
   <body>
     <a class="skip-link" href="#historia">Saltar a la historia</a>
     <div class="page">
-      <header class="topbar">
-        <a class="brand" href="#inicio" aria-label="Volver al inicio"><span class="brand-heart" aria-hidden="true">♥</span> tú + yo</a>
-        <a class="top-link" href="#recuerdos">abrir el álbum ↓</a>
-      </header>
-
       <main>
         <audio id="background-audio" preload="metadata" loop>
           <source src="sex-on-fire.mpeg" type="audio/mpeg" />
@@ -227,8 +229,8 @@
               <img src="moments/09-playa-beso.jpg" alt="La pareja besándose junto al mar" fetchpriority="high">
               <figcaption>mi lugar favorito: donde estemos juntos</figcaption>
             </figure>
-            <div class="script">nuestra historia</div>
-            <h1 id="cover-title">tú, yo y todas las vueltas</h1>
+            <div class="script cover-note">La coincidencia más bonita<br>de mi vida</div>
+            <h1 id="cover-title">y todas las vueltas que faltan</h1>
             <p class="cover-copy">Una colección de miradas, carreras, playas, planes improvisados y <strong>muchos motivos para quererte.</strong></p>
             <div class="cover-footer"><span class="heart-line" aria-hidden="true"></span><span>para mi persona favorita</span><span class="heart-line" aria-hidden="true"></span></div>
             <div class="music-wrap"><button class="music-button" id="music-button" type="button" aria-label="Reproducir nuestra canción" aria-pressed="false"><span class="music-icon" id="music-icon" aria-hidden="true">▶</span><span id="music-label">ponerle play a nuestro soundtrack</span></button></div>
@@ -238,6 +240,7 @@
         <section class="story" id="historia" aria-labelledby="story-title">
           <div class="story-intro reveal"><div><p class="section-kicker">donde todo empezó</p><h2 id="story-title">Lo nuestro no llegó con instrucciones.</h2></div><p>Primero fue una mirada. Después una conversación. Y luego, sin darnos cuenta, ya estábamos haciendo espacio para el otro en nuestros días.</p></div>
           <div class="story-path" aria-hidden="true"></div>
+          <div class="route-lovers" aria-hidden="true"><img src="route-loves.png" alt="" loading="lazy"></div>
 
           <article class="story-step reveal"><div class="step-copy"><span class="step-number">01</span><h3>Te vi en los pasillos.</h3><p>Muy seria, muy enojada y, sobre todo, <strong>radiante</strong>. Yo todavía no sabía tu nombre, pero ya sabía que había algo en ti que quería volver a mirar.</p><span class="hand-note">la primera escena que guardé</span></div><figure class="step-photo"><img src="moments/01-oficina.jpg" alt="Ella en un día de oficina" loading="lazy"><figcaption>antes de conocerte</figcaption></figure></article>
           <article class="story-step reveal"><div class="step-copy"><span class="step-number">02</span><h3>La excusa fue una capacitación.</h3><p>La vida nos sentó cerca y por fin pude hablar contigo. Lo que era una imagen desde lejos se convirtió en una conversación que quería alargar.</p><span class="hand-note">aquí empezó el “¿y si…?”</span></div><figure class="step-photo"><img src="moments/02-capacitacion.jpg" alt="La pareja compartiendo una salida" loading="lazy"><figcaption>la conversación</figcaption></figure></article>
