@@ -188,7 +188,7 @@
 
       .hero-visual { position: relative; justify-self: end; width: min(100%, 27rem); aspect-ratio: .8; }
       .hero-visual::before { position: absolute; inset: 12% -12% 16% 6%; content: ""; border: 1px solid rgba(244, 179, 106, .4); border-radius: 50% 50% 1rem 1rem; transform: rotate(7deg); }
-      .visual-frame { position: absolute; inset: 0; overflow: hidden; border: 1px solid rgba(182, 222, 209, .35); border-radius: 1rem 1rem 10rem 10rem; background: linear-gradient(155deg, rgba(8, 42, 55, .2), rgba(4, 17, 25, .55)), url('adventure-art.png') center / cover no-repeat; box-shadow: var(--shadow); }
+      .visual-frame { position: absolute; inset: 0; overflow: hidden; border: 1px solid rgba(182, 222, 209, .35); border-radius: 1rem 1rem 10rem 10rem; background: linear-gradient(155deg, rgba(8, 42, 55, .08), rgba(4, 17, 25, .6)), url('moments/01-oficina.jpg') center / cover no-repeat; box-shadow: var(--shadow); }
       .visual-frame::after { position: absolute; inset: 0; content: ""; background: linear-gradient(20deg, rgba(5, 20, 28, .72), transparent 56%, rgba(244, 179, 106, .16)); }
       .route-stamp { position: absolute; right: -2.3rem; bottom: 12%; z-index: 1; width: 10.8rem; padding: .95rem 1rem; border: 1px solid rgba(244, 179, 106, .6); border-radius: .7rem; color: var(--deep); background: var(--sun); box-shadow: 0 1rem 2.5rem rgba(0, 12, 18, .25); transform: rotate(-5deg); }
       .route-stamp strong { display: block; margin-bottom: .15rem; font-family: Georgia, serif; font-size: 1.45rem; font-weight: 400; }
@@ -209,6 +209,37 @@
       .stop-copy h3 { max-width: 13ch; margin-bottom: 1rem; color: var(--sand); font-size: clamp(2.2rem, 4vw, 4.2rem); line-height: .96; letter-spacing: -.05em; }
       .stop-copy p { max-width: 42rem; margin-bottom: 0; color: var(--muted); font-size: 1.05rem; }
       .route-note { display: inline-block; margin-top: 1.6rem; color: var(--foam); font-family: Georgia, serif; font-size: 1.08rem; font-style: italic; }
+
+      .memories { width: min(1200px, calc(100% - 3rem)); margin: 0 auto; padding: 5rem 0 7rem; }
+      .memories-heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: 2rem; }
+      .memories-heading h2 { max-width: 10ch; margin-bottom: .5rem; color: var(--sand); font-size: clamp(2.8rem, 5vw, 5.3rem); line-height: .93; letter-spacing: -.06em; }
+      .memories-heading p { max-width: 25rem; margin-bottom: .2rem; color: var(--muted); }
+      .memory-controls { display: flex; flex-wrap: wrap; gap: .55rem; margin-bottom: 1.6rem; }
+      .filter-button, .surprise-button { padding: .62rem .9rem; border: 1px solid var(--line); border-radius: 999px; color: var(--sand); background: rgba(233, 247, 239, .05); cursor: pointer; font-size: .76rem; font-weight: 700; letter-spacing: .04em; transition: background .2s ease, border-color .2s ease, transform .2s ease; }
+      .filter-button:hover, .filter-button:focus-visible, .surprise-button:hover, .surprise-button:focus-visible { border-color: var(--teal); background: rgba(105, 182, 172, .15); transform: translateY(-2px); }
+      .filter-button[aria-pressed="true"] { color: var(--deep); border-color: var(--teal); background: var(--teal); }
+      .surprise-button { margin-left: auto; color: var(--deep); border-color: var(--sun); background: var(--sun); }
+      .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 11rem; gap: .9rem; }
+      .memory-card { position: relative; min-width: 0; overflow: hidden; padding: 0; border: 0; border-radius: .9rem; background: var(--panel); cursor: pointer; box-shadow: 0 .7rem 1.6rem rgba(0, 11, 17, .2); transform: rotate(var(--tilt, 0deg)); transition: transform .25s ease, box-shadow .25s ease, opacity .25s ease; }
+      .memory-card:nth-child(3n) { --tilt: -1.3deg; }
+      .memory-card:nth-child(4n) { --tilt: 1.2deg; }
+      .memory-card:hover, .memory-card:focus-visible { z-index: 2; box-shadow: 0 1.5rem 2.4rem rgba(0, 11, 17, .38); transform: translateY(-7px) rotate(0deg) scale(1.03); }
+      .memory-card.is-hidden { display: none; }
+      .memory-card:nth-child(1), .memory-card:nth-child(8) { grid-row: span 2; }
+      .memory-card:nth-child(2), .memory-card:nth-child(6), .memory-card:nth-child(10) { grid-column: span 2; }
+      .memory-card img { display: block; width: 100%; height: 100%; object-fit: cover; }
+      .memory-card::after { position: absolute; inset: 0; content: ""; background: linear-gradient(180deg, transparent 40%, rgba(3, 14, 20, .8)); pointer-events: none; }
+      .memory-tag { position: absolute; right: .75rem; bottom: .7rem; left: .75rem; z-index: 1; color: var(--sand); font-size: .75rem; font-weight: 700; text-align: left; }
+      .memory-tag small { display: block; margin-top: .1rem; color: var(--sun); font-size: .63rem; letter-spacing: .1em; text-transform: uppercase; }
+      .video-moments { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; margin-top: 1.8rem; }
+      .video-card { overflow: hidden; border: 1px solid var(--line); border-radius: 1rem; background: rgba(233, 247, 239, .045); }
+      .video-card video { display: block; width: 100%; aspect-ratio: 1.35; object-fit: cover; background: var(--deep); }
+      .video-card p { margin: 0; padding: .8rem .9rem 1rem; color: var(--muted); font-size: .78rem; }
+      dialog { width: min(92vw, 52rem); padding: 0; border: 1px solid rgba(182, 222, 209, .4); border-radius: 1rem; color: var(--sand); background: var(--ocean); box-shadow: 0 2rem 7rem rgba(0, 0, 0, .55); }
+      dialog::backdrop { background: rgba(2, 12, 18, .82); backdrop-filter: blur(8px); }
+      .dialog-close { position: absolute; top: .7rem; right: .7rem; z-index: 2; display: grid; place-items: center; width: 2.2rem; height: 2.2rem; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; color: var(--sand); background: rgba(0, 0, 0, .32); cursor: pointer; font-size: 1.1rem; }
+      .dialog-image { display: block; width: 100%; max-height: 75vh; object-fit: contain; background: var(--deep); }
+      .dialog-caption { margin: 0; padding: 1rem 1.2rem 1.25rem; color: var(--sand); font-family: Georgia, serif; font-size: 1.15rem; }
 
       .finale { position: relative; display: grid; place-items: center; min-height: 90svh; width: min(900px, calc(100% - 3rem)); margin: 0 auto; padding: 7rem 0 9rem; text-align: center; }
       .finale::before { position: absolute; width: min(34rem, 85vw); height: min(34rem, 85vw); content: ""; border-radius: 50%; background: rgba(105, 182, 172, .1); filter: blur(65px); }
@@ -252,6 +283,16 @@
         .stop-marker { justify-self: start; }
         .stop-copy { padding: 1.65rem; }
         .stop-copy h3 { max-width: 11ch; }
+        .memories, .finale { width: min(100% - 2rem, 620px); }
+        .memories-heading { display: block; }
+        .memories-heading h2 { max-width: 9ch; }
+        .memories-heading p { margin-top: 1rem; }
+        .memory-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 12rem; }
+        .memory-card:nth-child(1), .memory-card:nth-child(8) { grid-row: span 1; }
+        .memory-card:nth-child(2), .memory-card:nth-child(6), .memory-card:nth-child(10) { grid-column: span 1; }
+        .memory-card:nth-child(1), .memory-card:nth-child(5), .memory-card:nth-child(9) { grid-row: span 2; }
+        .video-moments { grid-template-columns: 1fr; }
+        .surprise-button { margin-left: 0; }
         .finale { width: min(100% - 2rem, 620px); }
       }
       @media (prefers-reduced-motion: reduce) {
@@ -367,7 +408,97 @@
           </div>
         </section>
 
-        <section class="finale" aria-labelledby="finale-title">
+        <section class="memories" id="recuerdos" data-stop="5" aria-labelledby="memories-title">
+          <div class="memories-heading reveal">
+            <div>
+              <p class="route-label">Ruta 02 · Recuerdos</p>
+              <h2 id="memories-title">Lo que pasa entre kilómetro y kilómetro.</h2>
+            </div>
+            <p>Hay momentos que no cabían en una sola frase. Así que los dejamos aquí, para volver a ellos cuando queramos.</p>
+          </div>
+
+          <div class="memory-controls" role="toolbar" aria-label="Filtrar recuerdos">
+            <button class="filter-button" type="button" data-filter="all" aria-pressed="true">Todos</button>
+            <button class="filter-button" type="button" data-filter="inicio" aria-pressed="false">El comienzo</button>
+            <button class="filter-button" type="button" data-filter="aventura" aria-pressed="false">Aventuras</button>
+            <button class="filter-button" type="button" data-filter="locuras" aria-pressed="false">Locuras</button>
+            <button class="surprise-button" id="surprise-button" type="button">Abrir recuerdo sorpresa ✨</button>
+          </div>
+
+          <div class="memory-grid" id="memory-grid">
+            <button class="memory-card" type="button" data-category="inicio" data-image="moments/01-oficina.jpg" data-caption="Donde todo empezó: una mirada entre pasillos y días de oficina.">
+              <img src="moments/01-oficina.jpg" alt="Retrato de ella en la oficina" loading="lazy">
+              <span class="memory-tag">Donde todo empezó<small>El comienzo</small></span>
+            </button>
+            <button class="memory-card" type="button" data-category="inicio" data-image="moments/02-capacitacion.jpg" data-caption="La capacitación que convirtió una imagen bonita en una conversación.">
+              <img src="moments/02-capacitacion.jpg" alt="La pareja sonriendo durante una salida" loading="lazy">
+              <span class="memory-tag">La capacitación<small>El comienzo</small></span>
+            </button>
+            <button class="memory-card" type="button" data-category="inicio" data-image="moments/03-primer-rato.jpg" data-caption="Ese primer rato en que la curiosidad empezó a ganarle a los nervios.">
+              <img src="moments/03-primer-rato.jpg" alt="La pareja compartiendo un momento al aire libre" loading="lazy">
+              <span class="memory-tag">Primeros ratos<small>El comienzo</small></span>
+            </button>
+            <button class="memory-card" type="button" data-category="inicio" data-image="moments/04-paseo.jpg" data-caption="Una caminata, una charla y la sensación de que esto iba en serio.">
+              <img src="moments/04-paseo.jpg" alt="La pareja junto a una fuente" loading="lazy">
+              <span class="memory-tag">La primera ruta<small>El comienzo</small></span>
+            </button>
+            <button class="memory-card" type="button" data-category="aventura" data-image="moments/05-aventura.jpg" data-caption="De la oficina al mundo: cada paseo contigo se siente como una aventura.">
+              <img src="moments/05-aventura.jpg" alt="La pareja disfrutando una vista panorámica" loading="lazy">
+              <span class="memory-tag">Modo aventura<small>Juntos</small></span>
+            </button>
+            <button class="memory-card" type="button" data-category="aventura" data-image="moments/06-beso.jpg" data-caption="La prueba de que algunos recuerdos se explican mejor con un beso.">
+              <img src="moments/06-beso.jpg" alt="La pareja dándose un beso con una vista al lago" loading="lazy">
+              <span class="memory-tag">Ese beso<small>Juntos</small></span>
+            </button>
+            <button class="memory-card" type="button" data-category="aventura" data-image="moments/07-montana.jpg" data-caption="Altura, atardecer y dos personas que siempre encuentran el mismo mirador.">
+              <img src="moments/07-montana.jpg" alt="La pareja en una terraza con vista al atardecer" loading="lazy">
+              <span class="memory-tag">Kilómetros de cielo<small>Aventuras</small></span>
+            </button>
+            <button class="memory-card" type="button" data-category="aventura" data-image="moments/08-playa.jpg" data-caption="Cuando la ruta termina frente al mar, pero las ganas de seguir no terminan.">
+              <img src="moments/08-playa.jpg" alt="Ella en la playa junto a una formación rocosa" loading="lazy">
+              <span class="memory-tag">Frente al mar<small>Aventuras</small></span>
+            </button>
+            <button class="memory-card" type="button" data-category="aventura" data-image="moments/09-playa-beso.jpg" data-caption="Sal, olas y nosotros haciendo de cualquier lugar nuestro lugar.">
+              <img src="moments/09-playa-beso.jpg" alt="La pareja besándose en la playa" loading="lazy">
+              <span class="memory-tag">Con sal y besos<small>Aventuras</small></span>
+            </button>
+            <button class="memory-card" type="button" data-category="locuras" data-image="moments/10-bicicletas.jpg" data-caption="Dos bicicletas, una noche y la certeza de que contigo hasta lo cotidiano se vuelve planazo.">
+              <img src="moments/10-bicicletas.jpg" alt="La pareja paseando en bicicleta de noche" loading="lazy">
+              <span class="memory-tag">Plan improvisado<small>Locuras</small></span>
+            </button>
+            <button class="memory-card" type="button" data-category="locuras" data-image="moments/11-feria.jpg" data-caption="Gritos, luces y risas: nuestro talento especial para divertirnos juntos.">
+              <img src="moments/11-feria.jpg" alt="La pareja en un juego de feria" loading="lazy">
+              <span class="memory-tag">Sin miedo al juego<small>Locuras</small></span>
+            </button>
+            <button class="memory-card" type="button" data-category="locuras" data-image="moments/12-pies-playa.jpg" data-caption="La clase de tranquilidad que solo aparece cuando estamos juntos frente al mar.">
+              <img src="moments/12-pies-playa.jpg" alt="Los pies de la pareja sobre una playa de piedras" loading="lazy">
+              <span class="memory-tag">Pausa con arena<small>Locuras</small></span>
+            </button>
+          </div>
+
+          <div class="video-moments" aria-label="Videos de nuestros recuerdos">
+            <article class="video-card">
+              <video controls playsinline preload="metadata"><source src="moments/01-recuerdo.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video>
+              <p>Un momento que todavía nos hace sonreír.</p>
+            </article>
+            <article class="video-card">
+              <video controls playsinline preload="metadata"><source src="moments/02-aventura.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video>
+              <p>La aventura siempre se disfruta más contigo.</p>
+            </article>
+            <article class="video-card">
+              <video controls playsinline preload="metadata"><source src="moments/03-momento.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video>
+              <p>Otro recuerdo para guardar en nuestra ruta.</p>
+            </article>
+          </div>
+        </section>
+
+        <dialog id="memory-dialog" aria-labelledby="dialog-caption">
+          <button class="dialog-close" id="dialog-close" type="button" aria-label="Cerrar recuerdo">×</button>
+          <img class="dialog-image" id="dialog-image" alt="">
+          <p class="dialog-caption" id="dialog-caption"></p>
+        </dialog>
+
+        <section class="finale" data-stop="5" aria-labelledby="finale-title">
           <div class="finale-content reveal">
             <p class="eyebrow">La parada más importante</p>
             <h2 id="finale-title">¿Quieres ser mi novia?</h2>
@@ -449,7 +580,45 @@
         audioNote.textContent = 'Revisa el archivo de audio para volver a intentarlo.';
       });
 
-      const observedSections = [...document.querySelectorAll('.opening, .story-heading, .stop, .finale')];
+      const memoryCards = [...document.querySelectorAll('.memory-card')];
+      const filterButtons = [...document.querySelectorAll('[data-filter]')];
+      const memoryDialog = document.querySelector('#memory-dialog');
+      const dialogImage = document.querySelector('#dialog-image');
+      const dialogCaption = document.querySelector('#dialog-caption');
+
+      const applyFilter = (filter) => {
+        filterButtons.forEach((button) => {
+          button.setAttribute('aria-pressed', String(button.dataset.filter === filter));
+        });
+        memoryCards.forEach((card) => {
+          card.classList.toggle('is-hidden', filter !== 'all' && card.dataset.category !== filter);
+        });
+      };
+
+      const openMemory = (card) => {
+        dialogImage.src = card.dataset.image;
+        dialogImage.alt = card.querySelector('img').alt;
+        dialogCaption.textContent = card.dataset.caption;
+        memoryDialog.showModal();
+      };
+
+      filterButtons.forEach((button) => {
+        button.addEventListener('click', () => applyFilter(button.dataset.filter));
+      });
+      memoryCards.forEach((card) => {
+        card.addEventListener('click', () => openMemory(card));
+      });
+      document.querySelector('#dialog-close').addEventListener('click', () => memoryDialog.close());
+      memoryDialog.addEventListener('click', (event) => {
+        if (event.target === memoryDialog) memoryDialog.close();
+      });
+      document.querySelector('#surprise-button').addEventListener('click', () => {
+        const visibleCards = memoryCards.filter((card) => !card.classList.contains('is-hidden'));
+        const card = visibleCards[Math.floor(Math.random() * visibleCards.length)] || memoryCards[0];
+        openMemory(card);
+      });
+
+      const observedSections = [...document.querySelectorAll('.opening, .story-heading, .stop, .memories, .finale')];
       const revealElements = [...document.querySelectorAll('.reveal:not(.is-visible)')];
       const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
