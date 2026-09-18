@@ -117,6 +117,27 @@
         letter-spacing: .13em;
         text-transform: uppercase;
       }
+      .topbar-actions { display: flex; align-items: center; gap: 1.45rem; }
+      .music-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: .45rem;
+        padding: .45rem .7rem;
+        border: 1px solid rgba(255, 180, 168, .45);
+        border-radius: 999px;
+        color: var(--cream);
+        background: rgba(255, 255, 255, .055);
+        cursor: pointer;
+        font-size: .72rem;
+        font-weight: 700;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        transition: background .2s ease, border-color .2s ease, transform .2s ease;
+      }
+      .music-toggle:hover, .music-toggle:focus-visible { transform: translateY(-2px); border-color: var(--rose); background: rgba(241, 124, 131, .14); }
+      .music-toggle.is-playing { color: var(--night); background: var(--rose); border-color: var(--rose); }
+      .music-icon { display: inline-grid; place-items: center; width: 1.1rem; height: 1.1rem; font-size: 1rem; line-height: 1; }
+      .music-toggle:disabled { cursor: not-allowed; opacity: .6; }
       .progress-line {
         width: 5.5rem;
         height: 1px;
@@ -324,7 +345,7 @@
       .answer.secondary { color: var(--ink); background: transparent; }
       .answer:hover, .answer:focus-visible { transform: translateY(-3px); box-shadow: 0 .8rem 1.8rem rgba(241, 124, 131, .22); }
       .answer.secondary:hover, .answer.secondary:focus-visible { background: var(--panel); }
-      .answer:focus-visible, .scroll-cue:focus-visible, .wordmark:focus-visible { outline: 2px solid var(--cream); outline-offset: 4px; }
+      .answer:focus-visible, .scroll-cue:focus-visible, .wordmark:focus-visible, .music-toggle:focus-visible { outline: 2px solid var(--cream); outline-offset: 4px; }
 
       .reveal-message { display: none; max-width: 34rem; margin: 1.8rem auto 0; padding: 1rem 1.2rem; border: 1px solid rgba(255,255,255,.17); border-radius: .8rem; color: var(--cream); background: rgba(255,255,255,.06); }
       .reveal-message.is-visible { display: block; animation: arrive .45s ease both; }
@@ -334,12 +355,16 @@
 
       footer { width: min(1180px, calc(100% - 3rem)); margin: 0 auto; padding: 1.5rem 0 2.2rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .78rem; }
       footer span { color: var(--rose); }
+      .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
       .reveal { opacity: 0; transform: translateY(22px); transition: opacity .75s ease, transform .75s ease; }
       .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
       @media (max-width: 800px) {
         .topbar, .hero, .story-intro, .chapter, .question, footer { width: min(100% - 2rem, 620px); }
         .topbar { padding-top: 1rem; }
+        .topbar-actions { gap: .6rem; }
+        .music-toggle { width: 2rem; height: 2rem; justify-content: center; padding: .35rem; }
+        .music-text { display: none; }
         .progress-note { gap: .4rem; font-size: .65rem; }
         .progress-line { width: 3rem; }
         .hero { grid-template-columns: 1fr; gap: 3rem; padding-top: 7rem; }
@@ -368,13 +393,23 @@
           <span class="wordmark-mark" aria-hidden="true">&amp;</span>
           una historia
         </a>
-        <div class="progress-note" aria-label="Progreso de la historia">
-          <span id="chapter-label">01 / 06</span>
-          <span class="progress-line" aria-hidden="true"><span id="progress-bar"></span></span>
+        <div class="topbar-actions">
+          <button class="music-toggle" id="music-toggle" type="button" aria-pressed="false" aria-label="Reproducir Sex on Fire">
+            <span class="music-icon" aria-hidden="true">♫</span>
+            <span class="music-text" id="music-label">Escuchar</span>
+          </button>
+          <div class="progress-note" aria-label="Progreso de la historia">
+            <span id="chapter-label">01 / 06</span>
+            <span class="progress-line" aria-hidden="true"><span id="progress-bar"></span></span>
+          </div>
         </div>
       </header>
 
       <main>
+        <audio id="background-audio" preload="metadata" loop>
+          <source src="sex-on-fire.mpeg" type="audio/mpeg" />
+          Tu navegador no puede reproducir este audio.
+        </audio>
         <section class="hero" id="inicio" aria-labelledby="hero-title">
           <div class="hero-copy-block reveal is-visible">
             <p class="eyebrow">Para ti, con cariño</p>
@@ -448,6 +483,37 @@
       const chapterLabel = document.querySelector('#chapter-label');
       const progressBar = document.querySelector('#progress-bar');
       const message = document.querySelector('#reveal-message');
+      const audio = document.querySelector('#background-audio');
+      const musicToggle = document.querySelector('#music-toggle');
+      const musicLabel = document.querySelector('#music-label');
+      audio.volume = .42;
+
+      const updateMusicState = (isPlaying) => {
+        musicToggle.classList.toggle('is-playing', isPlaying);
+        musicToggle.setAttribute('aria-pressed', String(isPlaying));
+        musicToggle.setAttribute('aria-label', isPlaying ? 'Pausar Sex on Fire' : 'Reproducir Sex on Fire');
+        musicLabel.textContent = isPlaying ? 'Pausar' : 'Escuchar';
+      };
+
+      musicToggle.addEventListener('click', async () => {
+        if (audio.paused) {
+          try {
+            await audio.play();
+            updateMusicState(true);
+          } catch (error) {
+            musicLabel.textContent = 'Intenta de nuevo';
+          }
+        } else {
+          audio.pause();
+          updateMusicState(false);
+        }
+      });
+      audio.addEventListener('pause', () => updateMusicState(false));
+      audio.addEventListener('play', () => updateMusicState(true));
+      audio.addEventListener('error', () => {
+        musicToggle.disabled = true;
+        musicLabel.textContent = 'No disponible';
+      });
 
       const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
