@@ -87,8 +87,11 @@
       .story-path::before { box-shadow: 0 9rem 0 var(--sun), 0 18rem 0 var(--sun), 0 27rem 0 var(--sun); }
       .story-path::before { top: 0; }
       .story-path::after { bottom: 0; }
-      .route-lovers { position: relative; z-index: 2; width: min(35rem, 72%); margin: -1rem auto 1rem; transform: rotate(-2deg); filter: drop-shadow(0 .7rem .55rem rgba(16, 47, 70, .13)); }
+      .story-intro, .story-step, .travel-finish { position: relative; z-index: 1; }
+      .route-lovers { position: absolute; z-index: 0; pointer-events: none; width: min(26rem, 36%); opacity: .17; filter: grayscale(1) contrast(.62) saturate(.35); mix-blend-mode: multiply; }
       .route-lovers img { display: block; width: 100%; height: auto; }
+      .route-running { top: 14rem; left: -5rem; transform: rotate(-7deg); }
+      .route-cycling { top: 63%; right: -4rem; width: min(28rem, 39%); transform: rotate(7deg) scaleX(-1); }
       .story-step { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 8vw, 8rem); align-items: center; min-height: 18rem; margin: .4rem 0; }
       .story-step:nth-of-type(even) .step-copy { order: 2; }
       .story-step:nth-of-type(even) .step-photo { order: 1; }
@@ -191,7 +194,9 @@
         .story-intro, .ribbon-intro, .video-intro { display: block; }
         .story-intro p:last-child, .ribbon-intro p:last-child, .video-intro p:last-child { margin-top: 1rem; }
         .story-path { left: 1.1rem; top: 11rem; transform: rotate(1deg); }
-        .route-lovers { width: 100%; margin: -.4rem auto 1rem; transform: rotate(-1deg); }
+        .route-lovers { position: absolute; width: min(15rem, 47%); opacity: .14; }
+        .route-running { top: 13rem; left: -.8rem; transform: rotate(-5deg); }
+        .route-cycling { top: 69%; right: -.8rem; width: min(16rem, 52%); transform: rotate(5deg) scaleX(-1); }
         .story-step, .story-step:nth-of-type(even) { grid-template-columns: 3rem minmax(0, 1fr); gap: .7rem; min-height: 0; margin: 2rem 0 4rem; }
         .story-step:nth-of-type(even) .step-copy, .story-step:nth-of-type(even) .step-photo { order: initial; }
         .step-copy { grid-column: 2; grid-row: 1; padding: 0; }
@@ -225,11 +230,11 @@
 
         <section class="cover" id="inicio" aria-labelledby="cover-title">
           <div class="cover-card reveal is-visible">
+            <div class="script cover-note">La coincidencia más bonita<br>de mi vida</div>
             <figure class="cover-photo">
               <img src="moments/09-playa-beso.jpg" alt="La pareja besándose junto al mar" fetchpriority="high">
               <figcaption>mi lugar favorito: donde estemos juntos</figcaption>
             </figure>
-            <div class="script cover-note">La coincidencia más bonita<br>de mi vida</div>
             <h1 id="cover-title">y todas las vueltas que faltan</h1>
             <p class="cover-copy">Una colección de miradas, carreras, playas, planes improvisados y <strong>muchos motivos para quererte.</strong></p>
             <div class="cover-footer"><span class="heart-line" aria-hidden="true"></span><span>para mi persona favorita</span><span class="heart-line" aria-hidden="true"></span></div>
@@ -240,7 +245,8 @@
         <section class="story" id="historia" aria-labelledby="story-title">
           <div class="story-intro reveal"><div><p class="section-kicker">donde todo empezó</p><h2 id="story-title">Lo nuestro no llegó con instrucciones.</h2></div><p>Primero fue una mirada. Después una conversación. Y luego, sin darnos cuenta, ya estábamos haciendo espacio para el otro en nuestros días.</p></div>
           <div class="story-path" aria-hidden="true"></div>
-          <div class="route-lovers" aria-hidden="true"><img src="route-loves.png" alt="" loading="lazy"></div>
+          <div class="route-lovers route-running" aria-hidden="true"><img src="route-running.png" alt="" loading="lazy"></div>
+          <div class="route-lovers route-cycling" aria-hidden="true"><img src="route-cycling.png" alt="" loading="lazy"></div>
 
           <article class="story-step reveal"><div class="step-copy"><span class="step-number">01</span><h3>Te vi en los pasillos.</h3><p>Muy seria, muy enojada y, sobre todo, <strong>radiante</strong>. Yo todavía no sabía tu nombre, pero ya sabía que había algo en ti que quería volver a mirar.</p><span class="hand-note">la primera escena que guardé</span></div><figure class="step-photo"><img src="moments/01-oficina.jpg" alt="Ella en un día de oficina" loading="lazy"><figcaption>antes de conocerte</figcaption></figure></article>
           <article class="story-step reveal"><div class="step-copy"><span class="step-number">02</span><h3>La excusa fue una capacitación.</h3><p>La vida nos sentó cerca y por fin pude hablar contigo. Lo que era una imagen desde lejos se convirtió en una conversación que quería alargar.</p><span class="hand-note">aquí empezó el “¿y si…?”</span></div><figure class="step-photo"><img src="moments/02-capacitacion.jpg" alt="La pareja compartiendo una salida" loading="lazy"><figcaption>la conversación</figcaption></figure></article>
