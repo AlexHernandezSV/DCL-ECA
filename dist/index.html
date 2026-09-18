@@ -3,71 +3,73 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0b101c" />
-    <meta name="description" content="Una historia para descubrir despacio, hasta llegar a la pregunta importante." />
-    <title>Una pregunta pendiente</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%230b101c'/%3E%3Cpath d='M32 47S13 36.7 13 23.8C13 17.7 17.4 14 22.3 14c3.8 0 7.2 2.2 9.7 5.6C34.5 16.2 37.9 14 41.7 14 46.6 14 51 17.7 51 23.8 51 36.7 32 47 32 47Z' fill='%23f17c83'/%3E%3C/svg%3E" />
+    <meta name="theme-color" content="#082a37" />
+    <meta name="description" content="Una historia que comenzó en los pasillos, siguió en una capacitación y encontró su primera ruta corriendo juntos." />
+    <title>La ruta que empezó contigo</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23082a37'/%3E%3Ccircle cx='20' cy='43' r='8' fill='none' stroke='%23f4b36a' stroke-width='3'/%3E%3Ccircle cx='45' cy='43' r='8' fill='none' stroke='%23f4b36a' stroke-width='3'/%3E%3Cpath d='m20 43 11-18 7 18m-11-8h18m-7 8 7-18 5 10' fill='none' stroke='%23f4b36a' stroke-linecap='round' stroke-linejoin='round' stroke-width='3'/%3E%3C/svg%3E" />
     <style>
       :root {
-        --ink: #f9f5ef;
-        --muted: #aeb5c3;
-        --night: #0b101c;
-        --night-deep: #070b14;
-        --coral: #f17c83;
-        --rose: #ffb4a8;
-        --cream: #f6e7d0;
-        --line: rgba(255, 255, 255, .14);
-        --panel: rgba(255, 255, 255, .075);
-        --shadow: 0 28px 70px rgba(0, 0, 0, .36);
+        --ink: #f8f4e8;
+        --muted: #afc1c0;
+        --deep: #061b24;
+        --ocean: #082a37;
+        --teal: #69b6ac;
+        --foam: #b6ded1;
+        --sand: #f1e3c6;
+        --sun: #f4b36a;
+        --coral: #ef826e;
+        --line: rgba(233, 247, 239, .18);
+        --panel: rgba(233, 247, 239, .075);
+        --shadow: 0 2rem 5rem rgba(0, 10, 16, .32);
       }
 
       * { box-sizing: border-box; }
       html { scroll-behavior: smooth; }
       body {
-        margin: 0;
         min-width: 320px;
+        margin: 0;
         color: var(--ink);
-        background: var(--night);
+        background: var(--deep);
         font-family: Arial, Helvetica, sans-serif;
         font-size: 16px;
         line-height: 1.55;
         overflow-x: hidden;
       }
       a { color: inherit; }
-      button { font: inherit; }
-      ::selection { background: var(--rose); color: var(--night); }
+      button, input { font: inherit; }
+      ::selection { color: var(--deep); background: var(--sun); }
 
       .skip-link {
         position: fixed;
-        left: 1rem;
         top: -4rem;
+        left: 1rem;
         z-index: 20;
         padding: .7rem 1rem;
         border-radius: 999px;
-        color: var(--night);
-        background: var(--cream);
+        color: var(--deep);
+        background: var(--sand);
       }
       .skip-link:focus { top: 1rem; }
 
       .site-shell { position: relative; isolation: isolate; }
       .site-shell::before {
-        content: "";
         position: fixed;
         inset: 0;
         z-index: -2;
+        content: "";
         background:
-          radial-gradient(circle at 12% 15%, rgba(241, 124, 131, .18), transparent 27rem),
-          radial-gradient(circle at 88% 58%, rgba(251, 184, 152, .11), transparent 26rem),
-          linear-gradient(135deg, var(--night) 0%, var(--night-deep) 100%);
+          radial-gradient(circle at 8% 4%, rgba(105, 182, 172, .17), transparent 28rem),
+          radial-gradient(circle at 95% 49%, rgba(239, 130, 110, .14), transparent 30rem),
+          linear-gradient(135deg, var(--ocean), var(--deep) 75%);
       }
       .site-shell::after {
-        content: "";
         position: fixed;
         inset: 0;
         z-index: -1;
         pointer-events: none;
-        opacity: .25;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+        content: "";
+        opacity: .15;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E");
         mix-blend-mode: screen;
       }
 
@@ -80,304 +82,177 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: min(1180px, calc(100% - 3rem));
+        width: min(1200px, calc(100% - 3rem));
         margin: 0 auto;
-        padding: 1.45rem 0;
+        padding: 1.4rem 0;
       }
       .wordmark {
         display: inline-flex;
         align-items: center;
         gap: .65rem;
-        text-decoration: none;
         color: var(--ink);
-        font-size: .75rem;
+        font-size: .72rem;
         font-weight: 700;
         letter-spacing: .16em;
+        text-decoration: none;
         text-transform: uppercase;
       }
       .wordmark-mark {
         display: grid;
         place-items: center;
-        width: 1.8rem;
-        height: 1.8rem;
-        border: 1px solid rgba(255, 180, 168, .8);
+        width: 1.9rem;
+        height: 1.9rem;
+        border: 1px solid rgba(244, 179, 106, .8);
         border-radius: 50%;
-        color: var(--rose);
-        font-family: Georgia, serif;
+        color: var(--sun);
         font-size: 1rem;
-        font-weight: 400;
-        letter-spacing: 0;
       }
-      .progress-note {
-        display: flex;
-        align-items: center;
-        gap: .7rem;
-        color: var(--muted);
-        font-size: .73rem;
-        letter-spacing: .13em;
-        text-transform: uppercase;
-      }
-      .topbar-actions { display: flex; align-items: center; gap: 1.45rem; }
-      .music-toggle {
+      .topbar-tools { display: flex; align-items: center; gap: 1.4rem; }
+      .compact-player {
         display: inline-flex;
         align-items: center;
-        gap: .45rem;
+        gap: .5rem;
         padding: .45rem .7rem;
-        border: 1px solid rgba(255, 180, 168, .45);
+        border: 1px solid rgba(182, 222, 209, .45);
         border-radius: 999px;
-        color: var(--cream);
-        background: rgba(255, 255, 255, .055);
+        color: var(--sand);
+        background: rgba(233, 247, 239, .06);
         cursor: pointer;
         font-size: .72rem;
         font-weight: 700;
         letter-spacing: .08em;
         text-transform: uppercase;
-        transition: background .2s ease, border-color .2s ease, transform .2s ease;
+        transition: border-color .2s ease, background .2s ease, transform .2s ease;
       }
-      .music-toggle:hover, .music-toggle:focus-visible { transform: translateY(-2px); border-color: var(--rose); background: rgba(241, 124, 131, .14); }
-      .music-toggle.is-playing { color: var(--night); background: var(--rose); border-color: var(--rose); }
-      .music-icon { display: inline-grid; place-items: center; width: 1.1rem; height: 1.1rem; font-size: 1rem; line-height: 1; }
-      .music-toggle:disabled { cursor: not-allowed; opacity: .6; }
-      .progress-line {
-        width: 5.5rem;
-        height: 1px;
-        overflow: hidden;
-        background: var(--line);
-      }
-      .progress-line span {
-        display: block;
-        width: 16.67%;
-        height: 100%;
-        background: var(--rose);
-        transition: width .4s ease;
-      }
+      .compact-player:hover, .compact-player:focus-visible { border-color: var(--sun); background: rgba(244, 179, 106, .13); transform: translateY(-2px); }
+      .compact-player.is-playing { color: var(--deep); border-color: var(--sun); background: var(--sun); }
+      .compact-icon { display: inline-grid; place-items: center; width: 1.1rem; height: 1.1rem; font-size: 1rem; line-height: 1; }
+      .route-meter { display: flex; align-items: center; gap: .7rem; color: var(--muted); font-size: .72rem; letter-spacing: .13em; text-transform: uppercase; }
+      .meter-line { width: 5rem; height: 1px; overflow: hidden; background: var(--line); }
+      .meter-line span { display: block; width: 20%; height: 100%; background: var(--sun); transition: width .4s ease; }
 
       main { overflow: clip; }
-      .hero {
-        position: relative;
+      h1, h2, h3, p { margin-top: 0; }
+      h1, h2, h3 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; }
+
+      .opening {
         display: grid;
-        grid-template-columns: 1.15fr .85fr;
+        grid-template-columns: minmax(0, 1fr) minmax(20rem, .82fr);
         align-items: center;
-        gap: clamp(2.5rem, 7vw, 8rem);
+        gap: clamp(2rem, 7vw, 8rem);
         min-height: 100svh;
-        width: min(1180px, calc(100% - 3rem));
+        width: min(1200px, calc(100% - 3rem));
         margin: 0 auto;
         padding: 8rem 0 5rem;
       }
-      .eyebrow {
-        display: inline-flex;
+      .eyebrow { display: inline-flex; align-items: center; gap: .65rem; margin: 0 0 1.5rem; color: var(--sun); font-size: .75rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+      .eyebrow::before { width: 2rem; height: 1px; content: ""; background: var(--sun); }
+      .opening h1 { max-width: 12ch; margin-bottom: 1.45rem; color: var(--sand); font-size: clamp(3.1rem, 6.7vw, 7rem); line-height: .93; letter-spacing: -.065em; }
+      .opening-copy { max-width: 37rem; }
+      .opening-copy > p:not(.eyebrow) { max-width: 31rem; margin-bottom: 1.8rem; color: var(--muted); font-size: clamp(1rem, 1.6vw, 1.15rem); }
+      .audio-player {
+        display: flex;
         align-items: center;
-        gap: .65rem;
-        margin: 0 0 1.5rem;
-        color: var(--rose);
-        font-size: .76rem;
-        font-weight: 700;
-        letter-spacing: .18em;
-        text-transform: uppercase;
-      }
-      .eyebrow::before {
-        content: "";
-        width: 2rem;
-        height: 1px;
-        background: var(--rose);
-      }
-      h1, h2, h3, p { margin-top: 0; }
-      h1, h2, h3 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; }
-      h1 {
-        max-width: 9ch;
-        margin-bottom: 1.65rem;
-        color: var(--cream);
-        font-size: clamp(3.7rem, 8.2vw, 7.8rem);
-        line-height: .91;
-        letter-spacing: -.065em;
-      }
-      .hero-copy {
-        max-width: 33rem;
-        margin-bottom: 2rem;
-        color: var(--muted);
-        font-size: clamp(1rem, 1.6vw, 1.18rem);
-      }
-      .scroll-cue {
-        display: inline-flex;
-        align-items: center;
-        gap: .75rem;
-        color: var(--ink);
-        font-size: .77rem;
-        font-weight: 700;
-        letter-spacing: .13em;
-        text-decoration: none;
-        text-transform: uppercase;
-      }
-      .scroll-cue::after {
-        content: "↓";
-        display: grid;
-        place-items: center;
-        width: 2rem;
-        height: 2rem;
-        border: 1px solid var(--line);
-        border-radius: 50%;
-        color: var(--rose);
-        font-size: 1.1rem;
-        transition: transform .2s ease, background .2s ease;
-      }
-      .scroll-cue:hover::after, .scroll-cue:focus-visible::after { transform: translateY(3px); background: var(--panel); }
-
-      .hero-art {
-        position: relative;
-        justify-self: end;
-        width: min(100%, 27rem);
-        aspect-ratio: .82;
-      }
-      .hero-art::before, .hero-art::after { content: ""; position: absolute; border-radius: 50%; filter: blur(1px); }
-      .hero-art::before { inset: 8% -9% 24% 17%; background: rgba(241, 124, 131, .25); filter: blur(40px); }
-      .hero-art::after { inset: 44% 15% 5% -10%; background: rgba(247, 187, 147, .16); filter: blur(45px); }
-      .art-frame {
-        position: absolute;
-        inset: 0;
-        overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, .22);
-        border-radius: 14rem 14rem 1.2rem 1.2rem;
-        background: linear-gradient(155deg, rgba(10, 15, 27, .14), rgba(241, 124, 131, .12) 42%, rgba(8, 12, 23, .42) 85%), url('story-art.png') center / cover no-repeat;
-        box-shadow: var(--shadow);
-      }
-      .art-frame::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(155deg, rgba(255, 255, 255, .16), transparent 34%, rgba(4, 8, 16, .46));
-        mix-blend-mode: screen;
-        opacity: .8;
-      }
-      .art-frame::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(25deg, rgba(9, 13, 24, .82), transparent 44%), radial-gradient(circle at 66% 82%, rgba(255, 229, 190, .55), transparent 15%);
-      }
-      .art-caption {
-        position: absolute;
-        right: -2.5rem;
-        bottom: 10%;
-        z-index: 2;
-        width: 12rem;
-        padding: 1rem 1.05rem;
-        border: 1px solid rgba(255, 255, 255, .18);
-        border-radius: .7rem;
-        color: var(--ink);
-        background: rgba(13, 18, 31, .72);
-        box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, .25);
-        backdrop-filter: blur(16px);
-      }
-      .art-caption strong { display: block; margin-bottom: .25rem; color: var(--rose); font-family: Georgia, serif; font-size: 1.5rem; font-weight: 400; }
-      .art-caption span { color: var(--muted); font-size: .77rem; }
-
-      .story-intro {
-        display: grid;
-        grid-template-columns: .8fr 1.2fr;
-        gap: 4rem;
-        align-items: end;
-        width: min(930px, calc(100% - 3rem));
-        margin: 0 auto;
-        padding: 8rem 0 3rem;
-      }
-      .section-index { color: var(--rose); font-size: .8rem; font-weight: 700; letter-spacing: .15em; }
-      .story-intro h2 { max-width: 10ch; margin-bottom: 0; color: var(--cream); font-size: clamp(2.6rem, 5.2vw, 5.4rem); line-height: .95; letter-spacing: -.05em; }
-      .story-intro p { max-width: 27rem; margin-bottom: .4rem; color: var(--muted); }
-
-      .chapter {
-        position: relative;
-        display: grid;
-        grid-template-columns: 1fr minmax(18rem, 31rem) 1fr;
-        gap: 1.5rem;
-        align-items: center;
-        min-height: 80vh;
-        width: min(1180px, calc(100% - 3rem));
-        margin: 0 auto;
-        padding: 5rem 0;
-      }
-      .chapter:nth-of-type(even) .chapter-card { order: 3; }
-      .chapter:nth-of-type(even) .chapter-note { order: 1; text-align: right; }
-      .chapter-number { color: rgba(255, 255, 255, .32); font-family: Georgia, serif; font-size: clamp(7rem, 19vw, 17rem); line-height: .7; letter-spacing: -.1em; }
-      .chapter:nth-of-type(even) .chapter-number { text-align: right; }
-      .chapter-card {
-        position: relative;
-        z-index: 1;
-        padding: clamp(2rem, 5vw, 4.2rem);
-        border: 1px solid var(--line);
+        gap: .9rem;
+        width: min(100%, 29rem);
+        padding: .7rem .9rem;
+        border: 1px solid rgba(182, 222, 209, .3);
         border-radius: 1rem;
-        background: linear-gradient(145deg, rgba(255,255,255,.1), rgba(255,255,255,.03));
-        box-shadow: var(--shadow);
-        backdrop-filter: blur(10px);
+        background: rgba(5, 20, 28, .47);
+        box-shadow: 0 1.5rem 3.5rem rgba(0, 12, 18, .18);
+        backdrop-filter: blur(12px);
       }
-      .chapter-card::before { content: ""; position: absolute; inset: 1rem; border: 1px solid rgba(255, 180, 168, .2); border-radius: .65rem; pointer-events: none; }
-      .chapter-card h3 { position: relative; margin-bottom: 1.1rem; color: var(--cream); font-size: clamp(2.2rem, 4vw, 4rem); line-height: .98; letter-spacing: -.05em; }
-      .chapter-card p { position: relative; max-width: 27rem; margin-bottom: 0; color: var(--muted); font-size: 1rem; }
-      .chapter-note { color: var(--rose); font-family: Georgia, serif; font-size: 1.2rem; font-style: italic; }
-
-      .question {
-        position: relative;
+      .play-button {
         display: grid;
+        flex: 0 0 auto;
         place-items: center;
-        min-height: 90svh;
-        width: min(900px, calc(100% - 3rem));
-        margin: 0 auto;
-        padding: 8rem 0 10rem;
-        text-align: center;
-      }
-      .question::before { content: ""; position: absolute; width: min(32rem, 80vw); height: min(32rem, 80vw); border-radius: 50%; background: rgba(241, 124, 131, .11); filter: blur(70px); }
-      .question-content { position: relative; z-index: 1; }
-      .question h2 { max-width: 9ch; margin: 1rem auto 1.5rem; color: var(--cream); font-size: clamp(3.5rem, 8vw, 7.4rem); line-height: .9; letter-spacing: -.07em; }
-      .question p { max-width: 30rem; margin: 0 auto 2rem; color: var(--muted); }
-      .answer-row { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; }
-      .answer {
-        min-width: 10rem;
-        padding: .9rem 1.35rem;
-        border: 1px solid rgba(255, 180, 168, .75);
-        border-radius: 999px;
-        color: var(--night);
-        background: var(--rose);
+        width: 3rem;
+        height: 3rem;
+        border: 0;
+        border-radius: 50%;
+        color: var(--deep);
+        background: var(--sun);
         cursor: pointer;
-        font-size: .88rem;
-        font-weight: 700;
-        letter-spacing: .05em;
+        font-size: 1.15rem;
         transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
       }
-      .answer.secondary { color: var(--ink); background: transparent; }
-      .answer:hover, .answer:focus-visible { transform: translateY(-3px); box-shadow: 0 .8rem 1.8rem rgba(241, 124, 131, .22); }
-      .answer.secondary:hover, .answer.secondary:focus-visible { background: var(--panel); }
-      .answer:focus-visible, .scroll-cue:focus-visible, .wordmark:focus-visible, .music-toggle:focus-visible { outline: 2px solid var(--cream); outline-offset: 4px; }
+      .play-button:hover, .play-button:focus-visible { transform: scale(1.06); box-shadow: 0 .8rem 1.6rem rgba(244, 179, 106, .2); }
+      .play-button.is-playing { background: var(--foam); }
+      .player-body { min-width: 0; flex: 1; }
+      .player-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin: 0 0 .45rem; color: var(--sand); font-size: .8rem; font-weight: 700; }
+      .player-heading span:last-child { color: var(--teal); font-size: 1.05rem; }
+      .range-wrap { display: flex; align-items: center; gap: .65rem; }
+      .range-wrap input { flex: 1; min-width: 0; accent-color: var(--sun); cursor: pointer; }
+      .player-time { display: flex; justify-content: space-between; margin-top: .1rem; color: var(--muted); font-size: .67rem; letter-spacing: .04em; }
+      .audio-note { margin: .7rem 0 0; color: rgba(175, 193, 192, .78); font-size: .78rem; }
 
-      .reveal-message { display: none; max-width: 34rem; margin: 1.8rem auto 0; padding: 1rem 1.2rem; border: 1px solid rgba(255,255,255,.17); border-radius: .8rem; color: var(--cream); background: rgba(255,255,255,.06); }
+      .hero-visual { position: relative; justify-self: end; width: min(100%, 27rem); aspect-ratio: .8; }
+      .hero-visual::before { position: absolute; inset: 12% -12% 16% 6%; content: ""; border: 1px solid rgba(244, 179, 106, .4); border-radius: 50% 50% 1rem 1rem; transform: rotate(7deg); }
+      .visual-frame { position: absolute; inset: 0; overflow: hidden; border: 1px solid rgba(182, 222, 209, .35); border-radius: 1rem 1rem 10rem 10rem; background: linear-gradient(155deg, rgba(8, 42, 55, .2), rgba(4, 17, 25, .55)), url('adventure-art.png') center / cover no-repeat; box-shadow: var(--shadow); }
+      .visual-frame::after { position: absolute; inset: 0; content: ""; background: linear-gradient(20deg, rgba(5, 20, 28, .72), transparent 56%, rgba(244, 179, 106, .16)); }
+      .route-stamp { position: absolute; right: -2.3rem; bottom: 12%; z-index: 1; width: 10.8rem; padding: .95rem 1rem; border: 1px solid rgba(244, 179, 106, .6); border-radius: .7rem; color: var(--deep); background: var(--sun); box-shadow: 0 1rem 2.5rem rgba(0, 12, 18, .25); transform: rotate(-5deg); }
+      .route-stamp strong { display: block; margin-bottom: .15rem; font-family: Georgia, serif; font-size: 1.45rem; font-weight: 400; }
+      .route-stamp span { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+
+      .story { width: min(1040px, calc(100% - 3rem)); margin: 0 auto; padding: 7rem 0 5rem; }
+      .story-heading { display: grid; grid-template-columns: .72fr 1.28fr; gap: 3rem; align-items: end; margin: 0 auto 4rem; }
+      .route-label { margin-bottom: .8rem; color: var(--teal); font-size: .76rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+      .story-heading h2 { max-width: 12ch; margin-bottom: 0; color: var(--sand); font-size: clamp(2.8rem, 5.4vw, 5.4rem); line-height: .94; letter-spacing: -.06em; }
+      .story-heading p:last-child { max-width: 29rem; margin-bottom: .3rem; color: var(--muted); }
+      .route { position: relative; }
+      .route::before { position: absolute; top: 1.5rem; bottom: 1.5rem; left: 5.7rem; width: 1px; content: ""; background: repeating-linear-gradient(to bottom, var(--teal) 0 7px, transparent 7px 15px); opacity: .62; }
+      .stop { position: relative; display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: 2rem; align-items: start; padding: 2.5rem 0; }
+      .stop-marker { position: relative; z-index: 1; display: grid; place-items: center; justify-self: center; width: 3rem; height: 3rem; border: 1px solid var(--teal); border-radius: 50%; color: var(--deep); background: var(--teal); font-family: Georgia, serif; font-size: 1.1rem; box-shadow: 0 0 0 .5rem rgba(105, 182, 172, .09); }
+      .stop-copy { padding: clamp(1.8rem, 4vw, 3.3rem); border: 1px solid var(--line); border-radius: 1rem; background: linear-gradient(135deg, rgba(233, 247, 239, .1), rgba(233, 247, 239, .025)); box-shadow: var(--shadow); }
+      .stop-copy::after { display: block; width: 3rem; height: 1px; margin-top: 1.5rem; content: ""; background: var(--coral); }
+      .stop-kicker { margin-bottom: .7rem; color: var(--sun); font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+      .stop-copy h3 { max-width: 13ch; margin-bottom: 1rem; color: var(--sand); font-size: clamp(2.2rem, 4vw, 4.2rem); line-height: .96; letter-spacing: -.05em; }
+      .stop-copy p { max-width: 42rem; margin-bottom: 0; color: var(--muted); font-size: 1.05rem; }
+      .route-note { display: inline-block; margin-top: 1.6rem; color: var(--foam); font-family: Georgia, serif; font-size: 1.08rem; font-style: italic; }
+
+      .finale { position: relative; display: grid; place-items: center; min-height: 90svh; width: min(900px, calc(100% - 3rem)); margin: 0 auto; padding: 7rem 0 9rem; text-align: center; }
+      .finale::before { position: absolute; width: min(34rem, 85vw); height: min(34rem, 85vw); content: ""; border-radius: 50%; background: rgba(105, 182, 172, .1); filter: blur(65px); }
+      .finale-content { position: relative; z-index: 1; }
+      .finale h2 { max-width: 10ch; margin: 1rem auto 1.45rem; color: var(--sand); font-size: clamp(3.5rem, 8vw, 7rem); line-height: .9; letter-spacing: -.07em; }
+      .finale p { max-width: 32rem; margin: 0 auto 2rem; color: var(--muted); font-size: 1.05rem; }
+      .answer-row { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; }
+      .answer { min-width: 10rem; padding: .9rem 1.4rem; border: 1px solid var(--sun); border-radius: 999px; color: var(--deep); background: var(--sun); cursor: pointer; font-size: .88rem; font-weight: 700; letter-spacing: .05em; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+      .answer.secondary { color: var(--sand); background: transparent; }
+      .answer:hover, .answer:focus-visible { transform: translateY(-3px); box-shadow: 0 .9rem 1.8rem rgba(244, 179, 106, .2); }
+      .answer.secondary:hover, .answer.secondary:focus-visible { background: var(--panel); }
+      .reveal-message { display: none; max-width: 35rem; margin: 1.8rem auto 0; padding: 1rem 1.2rem; border: 1px solid rgba(182, 222, 209, .3); border-radius: .8rem; color: var(--sand); background: var(--panel); }
       .reveal-message.is-visible { display: block; animation: arrive .45s ease both; }
+      .heart { position: fixed; z-index: 10; pointer-events: none; color: var(--coral); font-size: 1.5rem; animation: float-away 1.7s ease-out forwards; }
       @keyframes arrive { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-      .heart { position: fixed; z-index: 10; pointer-events: none; color: var(--rose); font-size: 1.5rem; animation: float-away 1.7s ease-out forwards; }
       @keyframes float-away { 0% { opacity: 1; transform: translate(-50%, 0) scale(.7) rotate(0); } 100% { opacity: 0; transform: translate(-50%, -180px) scale(1.25) rotate(18deg); } }
 
-      footer { width: min(1180px, calc(100% - 3rem)); margin: 0 auto; padding: 1.5rem 0 2.2rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .78rem; }
-      footer span { color: var(--rose); }
+      footer { width: min(1200px, calc(100% - 3rem)); margin: 0 auto; padding: 1.5rem 0 2.2rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .78rem; }
+      footer span { color: var(--sun); }
       .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
       .reveal { opacity: 0; transform: translateY(22px); transition: opacity .75s ease, transform .75s ease; }
       .reveal.is-visible { opacity: 1; transform: translateY(0); }
+      .answer:focus-visible, .compact-player:focus-visible, .play-button:focus-visible, .wordmark:focus-visible { outline: 2px solid var(--sand); outline-offset: 4px; }
 
-      @media (max-width: 800px) {
-        .topbar, .hero, .story-intro, .chapter, .question, footer { width: min(100% - 2rem, 620px); }
+      @media (max-width: 820px) {
+        .topbar, .opening, .story, footer { width: min(100% - 2rem, 620px); }
         .topbar { padding-top: 1rem; }
-        .topbar-actions { gap: .6rem; }
-        .music-toggle { width: 2rem; height: 2rem; justify-content: center; padding: .35rem; }
-        .music-text { display: none; }
-        .progress-note { gap: .4rem; font-size: .65rem; }
-        .progress-line { width: 3rem; }
-        .hero { grid-template-columns: 1fr; gap: 3rem; padding-top: 7rem; }
-        h1 { max-width: 8ch; }
-        .hero-art { justify-self: center; width: min(80vw, 22rem); }
-        .art-caption { right: -1rem; }
-        .story-intro { grid-template-columns: 1fr; gap: 1.25rem; padding-top: 6rem; }
-        .story-intro h2 { max-width: 9ch; }
-        .chapter, .chapter:nth-of-type(even) { grid-template-columns: 1fr; gap: 1.25rem; min-height: auto; padding: 5rem 0; }
-        .chapter-number, .chapter:nth-of-type(even) .chapter-number { order: 1; text-align: left; font-size: 7.5rem; }
-        .chapter-card, .chapter:nth-of-type(even) .chapter-card { order: 2; }
-        .chapter-note, .chapter:nth-of-type(even) .chapter-note { order: 3; text-align: left; }
-        .question { min-height: 82svh; padding: 7rem 0 8rem; }
+        .topbar-tools { gap: .6rem; }
+        .compact-player { width: 2rem; height: 2rem; justify-content: center; padding: .35rem; }
+        .compact-player span:last-child { display: none; }
+        .route-meter { gap: .4rem; font-size: .64rem; }
+        .meter-line { width: 3.3rem; }
+        .opening { grid-template-columns: 1fr; gap: 3rem; padding-top: 7rem; }
+        .opening h1 { max-width: 11ch; }
+        .hero-visual { justify-self: center; width: min(80vw, 23rem); }
+        .route-stamp { right: -1rem; }
+        .story-heading { grid-template-columns: 1fr; gap: 1.3rem; }
+        .story-heading h2 { max-width: 11ch; }
+        .route::before { left: 1.5rem; }
+        .stop { grid-template-columns: 3rem minmax(0, 1fr); gap: 1.2rem; }
+        .stop-marker { justify-self: start; }
+        .stop-copy { padding: 1.65rem; }
+        .stop-copy h3 { max-width: 11ch; }
+        .finale { width: min(100% - 2rem, 620px); }
       }
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
@@ -390,17 +265,17 @@
     <div class="site-shell">
       <header class="topbar">
         <a class="wordmark" href="#inicio" aria-label="Volver al inicio">
-          <span class="wordmark-mark" aria-hidden="true">&amp;</span>
-          una historia
+          <span class="wordmark-mark" aria-hidden="true">↗</span>
+          nuestra ruta
         </a>
-        <div class="topbar-actions">
-          <button class="music-toggle" id="music-toggle" type="button" aria-pressed="false" aria-label="Reproducir Sex on Fire">
-            <span class="music-icon" aria-hidden="true">♫</span>
-            <span class="music-text" id="music-label">Escuchar</span>
+        <div class="topbar-tools">
+          <button class="compact-player" id="compact-player" type="button" aria-label="Reproducir la canción" aria-pressed="false">
+            <span class="compact-icon" aria-hidden="true">♫</span>
+            <span>Escuchar</span>
           </button>
-          <div class="progress-note" aria-label="Progreso de la historia">
-            <span id="chapter-label">01 / 06</span>
-            <span class="progress-line" aria-hidden="true"><span id="progress-bar"></span></span>
+          <div class="route-meter" aria-label="Progreso de la historia">
+            <span id="route-label">00 / 05</span>
+            <span class="meter-line" aria-hidden="true"><span id="meter-fill"></span></span>
           </div>
         </div>
       </header>
@@ -410,111 +285,172 @@
           <source src="sex-on-fire.mpeg" type="audio/mpeg" />
           Tu navegador no puede reproducir este audio.
         </audio>
-        <section class="hero" id="inicio" aria-labelledby="hero-title">
-          <div class="hero-copy-block reveal is-visible">
-            <p class="eyebrow">Para ti, con cariño</p>
-            <h1 id="hero-title">Tengo algo que decirte.</h1>
-            <p class="hero-copy">No encontré una forma sencilla de decirlo, así que hice una pequeña historia. Léela despacio; hay una pregunta esperándote al final.</p>
-            <a class="scroll-cue" href="#historia">Comenzar a leer</a>
+
+        <section class="opening" id="inicio" aria-labelledby="opening-title">
+          <div class="opening-copy reveal is-visible">
+            <p class="eyebrow">Antes de comenzar</p>
+            <h1 id="opening-title">Dale play a la canción que nos ha hecho sentir este amor.</h1>
+            <p>Y cuando empiece a sonar, acompáñame por el camino que nos trajo hasta aquí. Esta historia se lee mejor despacio.</p>
+            <div class="audio-player" aria-label="Reproductor de música">
+              <button class="play-button" id="play-button" type="button" aria-label="Reproducir la canción" aria-pressed="false">
+                <span id="play-icon" aria-hidden="true">▶</span>
+              </button>
+              <div class="player-body">
+                <div class="player-heading"><span id="music-status">Dale play para comenzar</span><span aria-hidden="true">♪</span></div>
+                <div class="range-wrap">
+                  <label class="sr-only" for="audio-progress">Progreso de la canción</label>
+                  <input id="audio-progress" type="range" min="0" max="100" value="0" step="0.1" />
+                </div>
+                <div class="player-time"><span id="elapsed">0:00</span><span id="duration">--:--</span></div>
+              </div>
+            </div>
+            <p class="audio-note" id="audio-note">La música empezará cuando presiones el botón.</p>
           </div>
-          <div class="hero-art reveal is-visible" aria-label="Composición abstracta en tonos coral y azul noche">
-            <div class="art-frame"></div>
-            <div class="art-caption"><strong>tú + yo</strong><span>un capítulo que me gustaría escribir contigo</span></div>
+          <div class="hero-visual reveal is-visible" aria-label="Una ruta de bicicleta hacia el mar">
+            <div class="visual-frame"></div>
+            <div class="route-stamp"><strong>km 00</strong><span>la primera ruta</span></div>
           </div>
         </section>
 
-        <section id="historia" aria-labelledby="story-title">
-          <div class="story-intro reveal">
-            <span class="section-index">01 — 03</span>
+        <section class="story" id="historia" aria-labelledby="story-title">
+          <div class="story-heading reveal">
             <div>
-              <h2 id="story-title">Antes de la pregunta, todo lo que ya siento.</h2>
-              <p>Hay cosas que empiezan sin hacer ruido. Una conversación, una sonrisa, esas ganas de contarle algo a alguien primero.</p>
+              <p class="route-label">Ruta 01 · Primeros kilómetros</p>
+              <span class="route-label">Una historia en movimiento</span>
+            </div>
+            <div>
+              <h2 id="story-title">De los pasillos de la empresa a una aventura que apenas comienza.</h2>
+              <p>Hay caminos que empiezan mucho antes de que uno se dé cuenta. El nuestro comenzó con una mirada, una conversación y una invitación.</p>
             </div>
           </div>
 
-          <article class="chapter reveal">
-            <div class="chapter-number" aria-hidden="true">01</div>
-            <div class="chapter-card">
-              <h3>Todo empezó con algo pequeño.</h3>
-              <p>Una charla cualquiera se fue quedando en mi memoria. Luego llegaron más conversaciones, más confianza y esa sensación bonita de estar justo donde quería estar.</p>
-            </div>
-            <p class="chapter-note">“Qué bonito encontrarte.”</p>
-          </article>
+          <div class="route">
+            <article class="stop reveal" data-stop="1">
+              <div class="stop-marker" aria-hidden="true">01</div>
+              <div class="stop-copy">
+                <p class="stop-kicker">Los pasillos</p>
+                <h3>La primera vez que te vi.</h3>
+                <p>Te veía en los pasillos de la empresa, caminando muy seria y enojada, pero sobre todo radiante, bella e imponente.</p>
+                <span class="route-note">No sabía que ya había comenzado el viaje.</span>
+              </div>
+            </article>
 
-          <article class="chapter reveal">
-            <p class="chapter-note">“Mi parte favorita del día.”</p>
-            <div class="chapter-card">
-              <h3>Después, te volviste mi lugar favorito.</h3>
-              <p>Empecé a buscarte en los detalles: en una canción, en una noticia, en cualquier cosa que me diera una excusa para hablar contigo.</p>
-            </div>
-            <div class="chapter-number" aria-hidden="true">02</div>
-          </article>
+            <article class="stop reveal" data-stop="2">
+              <div class="stop-marker" aria-hidden="true">02</div>
+              <div class="stop-copy">
+                <p class="stop-kicker">La capacitación</p>
+                <h3>El día que por fin te conocí.</h3>
+                <p>Luego llegó una capacitación en tu área. Ahí empecé a hablar contigo y aquella imagen de los pasillos se convirtió en una conversación que quería seguir descubriendo.</p>
+                <span class="route-note">El camino dejó de ser solo una mirada.</span>
+              </div>
+            </article>
 
-          <article class="chapter reveal">
-            <div class="chapter-number" aria-hidden="true">03</div>
-            <div class="chapter-card">
-              <h3>Y ahora quiero preguntarte algo.</h3>
-              <p>Me gusta lo que somos cuando estamos juntos. Me gusta lo que estamos construyendo sin prisa. Y me encantaría descubrir lo que sigue, contigo.</p>
-            </div>
-            <p class="chapter-note">“Lo mejor todavía no lo escribimos.”</p>
-          </article>
+            <article class="stop reveal" data-stop="3">
+              <div class="stop-marker" aria-hidden="true">03</div>
+              <div class="stop-copy">
+                <p class="stop-kicker">La primera ruta</p>
+                <h3>Después te invité a correr.</h3>
+                <p>Aceptaste. Y entre pasos, respiraciones y conversaciones, fue donde empezamos a conocernos más, sin la prisa de la oficina y con espacio para ser nosotros.</p>
+                <span class="route-note">Nuestro primer kilómetro juntos.</span>
+              </div>
+            </article>
+
+            <article class="stop reveal" data-stop="4">
+              <div class="stop-marker" aria-hidden="true">04</div>
+              <div class="stop-copy">
+                <p class="stop-kicker">Lo que sigue</p>
+                <h3>Y ahora quiero seguir recorriendo contigo.</h3>
+                <p>Si una mirada, una capacitación y una carrera nos trajeron hasta aquí, imagina todos los lugares, playas y aventuras que todavía nos esperan.</p>
+                <span class="route-note">La mejor parte de la ruta aún está por comenzar.</span>
+              </div>
+            </article>
+          </div>
         </section>
 
-        <section class="question" aria-labelledby="question-title">
-          <div class="question-content reveal">
-            <p class="eyebrow">La pregunta importante</p>
-            <h2 id="question-title">¿Quieres ser mi novia?</h2>
-            <p>Prometo seguir eligiéndote en los días fáciles, en los raros y en todos los que aún nos faltan por vivir.</p>
+        <section class="finale" aria-labelledby="finale-title">
+          <div class="finale-content reveal">
+            <p class="eyebrow">La parada más importante</p>
+            <h2 id="finale-title">¿Quieres ser mi novia?</h2>
+            <p>Porque si esto fue apenas el primer kilómetro, quiero descubrir contigo todo lo que viene después.</p>
             <div class="answer-row" role="group" aria-label="Respuesta">
               <button class="answer" type="button" data-answer="yes">Sí, quiero 🤍</button>
-              <button class="answer secondary" type="button" data-answer="also-yes">Obvio que sí</button>
+              <button class="answer secondary" type="button" data-answer="also-yes">Claro que sí</button>
             </div>
             <p class="reveal-message" id="reveal-message" role="status"></p>
           </div>
         </section>
       </main>
 
-      <footer>Hecho con nervios, ilusión y <span>mucho cariño</span>.</footer>
+      <footer>Hecho para una ruta con <span>muchas aventuras</span> por delante.</footer>
     </div>
 
     <script>
-      const chapters = [...document.querySelectorAll('.chapter, .story-intro, .question')];
-      const reveals = [...document.querySelectorAll('.reveal:not(.is-visible)')];
-      const chapterLabel = document.querySelector('#chapter-label');
-      const progressBar = document.querySelector('#progress-bar');
-      const message = document.querySelector('#reveal-message');
       const audio = document.querySelector('#background-audio');
-      const musicToggle = document.querySelector('#music-toggle');
-      const musicLabel = document.querySelector('#music-label');
+      const playButton = document.querySelector('#play-button');
+      const compactPlayer = document.querySelector('#compact-player');
+      const playIcon = document.querySelector('#play-icon');
+      const musicStatus = document.querySelector('#music-status');
+      const audioNote = document.querySelector('#audio-note');
+      const audioProgress = document.querySelector('#audio-progress');
+      const elapsed = document.querySelector('#elapsed');
+      const duration = document.querySelector('#duration');
+      const routeLabel = document.querySelector('#route-label');
+      const meterFill = document.querySelector('#meter-fill');
+      const revealMessage = document.querySelector('#reveal-message');
       audio.volume = .42;
 
-      const updateMusicState = (isPlaying) => {
-        musicToggle.classList.toggle('is-playing', isPlaying);
-        musicToggle.setAttribute('aria-pressed', String(isPlaying));
-        musicToggle.setAttribute('aria-label', isPlaying ? 'Pausar Sex on Fire' : 'Reproducir Sex on Fire');
-        musicLabel.textContent = isPlaying ? 'Pausar' : 'Escuchar';
+      const formatTime = (seconds) => {
+        if (!Number.isFinite(seconds)) return '--:--';
+        const minutes = Math.floor(seconds / 60);
+        const remainder = Math.floor(seconds % 60).toString().padStart(2, '0');
+        return minutes + ':' + remainder;
       };
 
-      musicToggle.addEventListener('click', async () => {
+      const setPlayingState = (isPlaying) => {
+        playButton.classList.toggle('is-playing', isPlaying);
+        compactPlayer.classList.toggle('is-playing', isPlaying);
+        playButton.setAttribute('aria-pressed', String(isPlaying));
+        compactPlayer.setAttribute('aria-pressed', String(isPlaying));
+        playButton.setAttribute('aria-label', isPlaying ? 'Pausar la canción' : 'Reproducir la canción');
+        compactPlayer.setAttribute('aria-label', isPlaying ? 'Pausar la canción' : 'Reproducir la canción');
+        playIcon.textContent = isPlaying ? 'Ⅱ' : '▶';
+        musicStatus.textContent = isPlaying ? 'Reproduciendo' : 'Dale play para comenzar';
+        audioNote.textContent = isPlaying ? 'La ruta comienza aquí.' : 'La música empezará cuando presiones el botón.';
+      };
+
+      const toggleAudio = async () => {
         if (audio.paused) {
           try {
             await audio.play();
-            updateMusicState(true);
           } catch (error) {
-            musicLabel.textContent = 'Intenta de nuevo';
+            musicStatus.textContent = 'Toca de nuevo para reproducir';
           }
         } else {
           audio.pause();
-          updateMusicState(false);
         }
+      };
+
+      playButton.addEventListener('click', toggleAudio);
+      compactPlayer.addEventListener('click', toggleAudio);
+      audio.addEventListener('play', () => setPlayingState(true));
+      audio.addEventListener('pause', () => setPlayingState(false));
+      audio.addEventListener('loadedmetadata', () => { duration.textContent = formatTime(audio.duration); });
+      audio.addEventListener('timeupdate', () => {
+        elapsed.textContent = formatTime(audio.currentTime);
+        audioProgress.value = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
       });
-      audio.addEventListener('pause', () => updateMusicState(false));
-      audio.addEventListener('play', () => updateMusicState(true));
+      audioProgress.addEventListener('input', () => {
+        if (audio.duration) audio.currentTime = (Number(audioProgress.value) / 100) * audio.duration;
+      });
       audio.addEventListener('error', () => {
-        musicToggle.disabled = true;
-        musicLabel.textContent = 'No disponible';
+        playButton.disabled = true;
+        compactPlayer.disabled = true;
+        musicStatus.textContent = 'No se pudo cargar la música';
+        audioNote.textContent = 'Revisa el archivo de audio para volver a intentarlo.';
       });
 
+      const observedSections = [...document.querySelectorAll('.opening, .story-heading, .stop, .finale')];
+      const revealElements = [...document.querySelectorAll('.reveal:not(.is-visible)')];
       const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -522,24 +458,24 @@
             revealObserver.unobserve(entry.target);
           }
         });
-      }, { threshold: .16 });
-      reveals.forEach((element) => revealObserver.observe(element));
+      }, { threshold: .15 });
+      revealElements.forEach((element) => revealObserver.observe(element));
 
-      const progressObserver = new IntersectionObserver((entries) => {
+      const routeObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          const index = chapters.indexOf(entry.target);
-          const current = Math.min(6, Math.max(1, index + 1));
-          chapterLabel.textContent = String(current).padStart(2, '0') + ' / 06';
-          progressBar.style.width = (current / 6 * 100) + '%';
+          const stop = entry.target.dataset.stop;
+          const current = stop ? Number(stop) : entry.target.classList.contains('finale') ? 5 : 1;
+          routeLabel.textContent = String(current).padStart(2, '0') + ' / 05';
+          meterFill.style.width = (current / 5 * 100) + '%';
         });
       }, { rootMargin: '-35% 0px -50% 0px', threshold: 0 });
-      chapters.forEach((chapter) => progressObserver.observe(chapter));
+      observedSections.forEach((section) => routeObserver.observe(section));
 
       document.querySelectorAll('[data-answer]').forEach((button) => {
         button.addEventListener('click', () => {
-          message.textContent = 'Entonces queda decidido: este es el comienzo de nuestro capítulo favorito. ✨';
-          message.classList.add('is-visible');
+          revealMessage.textContent = 'Entonces queda decidido: este es el comienzo de nuestra mejor aventura. ✨';
+          revealMessage.classList.add('is-visible');
           for (let index = 0; index < 12; index += 1) {
             const heart = document.createElement('span');
             heart.className = 'heart';
