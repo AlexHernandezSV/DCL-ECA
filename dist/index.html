@@ -126,9 +126,10 @@
       .ribbon-inner { width: min(1180px, calc(100% - 2.5rem)); margin: 0 auto; transform: rotate(1deg); }
       .ribbon-intro { display: flex; justify-content: space-between; gap: 2rem; align-items: end; margin-bottom: 1rem; }
       .ribbon-intro h2, .ribbon-intro p:last-child { color: var(--cream); }
-      .ribbon-tabs { display: flex; flex-wrap: wrap; gap: .55rem; margin-bottom: 1rem; }
-      .ribbon-tab { padding: .5rem .8rem; border: 1px solid rgba(255, 250, 244, .5); border-radius: 999px; color: var(--cream); background: transparent; cursor: pointer; font-size: .75rem; font-weight: 800; }
-      .ribbon-tab:hover, .ribbon-tab:focus-visible, .ribbon-tab[aria-pressed="true"] { color: var(--navy); background: var(--sun); }
+      .swipe-hint { display: flex; align-items: center; gap: .65rem; width: max-content; margin: .25rem 0 .8rem; color: var(--cream); font-family: "Segoe Print", "Bradley Hand", cursive; font-size: .92rem; font-weight: 700; opacity: .95; }
+      .swipe-hand { display: inline-block; font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif; font-size: 1.75rem; line-height: 1; transform-origin: center; animation: swipe-left 1.45s ease-in-out infinite; }
+      .swipe-text { display: inline-block; }
+      @keyframes swipe-left { 0%, 100% { transform: translateX(10px); opacity: .65; } 50% { transform: translateX(-10px); opacity: 1; } }
       .memory-ribbon { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(13rem, 18rem); gap: 1.1rem; padding: 1.2rem .4rem 2rem; overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-color: var(--sun) rgba(255, 250, 244, .2); }
       .memory-ribbon::-webkit-scrollbar { height: .65rem; }
       .memory-ribbon::-webkit-scrollbar-track { background: rgba(255, 250, 244, .18); border-radius: 999px; }
@@ -208,6 +209,8 @@
         .step-copy h3 { font-size: clamp(2.2rem, 11vw, 3.5rem); }
         .ribbon-section { padding: 3.6rem 0 4rem; }
         .ribbon-inner { width: min(100% - 1.4rem, 620px); }
+        .swipe-hint { gap: .5rem; margin: .1rem 0 .65rem; font-size: .86rem; }
+        .swipe-hand { font-size: 1.65rem; }
         .memory-ribbon { margin-right: -.7rem; margin-left: -.7rem; grid-auto-columns: minmax(13rem, 17rem); }
         .travel-finish { margin-top: 0; padding-bottom: 1.2rem; }
         .travel-line { height: 8rem; }
@@ -265,7 +268,7 @@
         <section class="ribbon-section" id="recuerdos" aria-labelledby="ribbon-title">
           <div class="ribbon-inner">
             <div class="ribbon-intro reveal"><div><p class="section-kicker">guárdalos aquí</p><h2 id="ribbon-title">Pequeñas pruebas de que sí pasó.</h2></div><p>Desliza aquí. Toca cualquier postal. Algunas tienen arena, otras luces, pero todas tienen un pedacito de nosotros.</p></div>
-            <div class="ribbon-tabs" role="toolbar" aria-label="Filtrar recuerdos"><button class="ribbon-tab" type="button" data-filter="all" aria-pressed="true">todo el álbum</button><button class="ribbon-tab" type="button" data-filter="inicio" aria-pressed="false">el comienzo</button><button class="ribbon-tab" type="button" data-filter="aventura" aria-pressed="false">aventuras</button><button class="ribbon-tab" type="button" data-filter="locuras" aria-pressed="false">planes improvisados</button></div>
+            <div class="swipe-hint" aria-hidden="true"><span class="swipe-hand">👈</span><span class="swipe-text">desliza los recuerdos</span></div>
             <div class="memory-ribbon" id="memory-ribbon">
               <button class="memory-card" type="button" data-category="inicio" data-image="moments/01-oficina.jpg" data-caption="La primera mirada que se quedó conmigo."><img src="moments/01-oficina.jpg" alt="Ella en la oficina" loading="lazy"><span class="memory-caption">la mirada<small>comienzo</small></span></button>
               <button class="memory-card" type="button" data-category="inicio" data-image="moments/02-capacitacion.jpg" data-caption="La conversación que abrió este camino."><img src="moments/02-capacitacion.jpg" alt="La pareja sonriendo durante una salida" loading="lazy"><span class="memory-caption">la conversación<small>comienzo</small></span></button>
@@ -323,16 +326,10 @@
       audio.addEventListener('pause', () => setPlayingState(false));
 
       const memoryCards = [...document.querySelectorAll('.memory-card')];
-      const filterButtons = [...document.querySelectorAll('[data-filter]')];
       const memoryDialog = document.querySelector('#memory-dialog');
       const dialogImage = document.querySelector('#dialog-image');
       const dialogCaption = document.querySelector('#dialog-caption');
-      const applyFilter = (filter) => {
-        filterButtons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.filter === filter)));
-        memoryCards.forEach((card) => card.classList.toggle('is-hidden', filter !== 'all' && card.dataset.category !== filter));
-      };
       const openMemory = (card) => { dialogImage.src = card.dataset.image; dialogImage.alt = card.querySelector('img').alt; dialogCaption.textContent = card.dataset.caption; memoryDialog.showModal(); };
-      filterButtons.forEach((button) => button.addEventListener('click', () => applyFilter(button.dataset.filter)));
       memoryCards.forEach((card) => card.addEventListener('click', () => openMemory(card)));
       document.querySelector('#dialog-close').addEventListener('click', () => memoryDialog.close());
       memoryDialog.addEventListener('click', (event) => { if (event.target === memoryDialog) memoryDialog.close(); });
