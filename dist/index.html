@@ -164,8 +164,6 @@
       .answer.secondary { color: var(--navy); background: transparent; box-shadow: 4px 4px 0 var(--sun); }
       .answer:hover, .answer:focus-visible { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--dust); }
       .answer.secondary:hover, .answer.secondary:focus-visible { box-shadow: 2px 2px 0 var(--sun); }
-      .reveal-message { display: none; max-width: 34rem; margin: 1.6rem auto 0; padding: 1rem 1.2rem; border: 2px dashed var(--dust-dark); color: var(--dust-dark); background: rgba(255, 250, 244, .7); font-family: "Segoe Print", "Bradley Hand", cursive; font-weight: 700; }
-      .reveal-message.is-visible { display: block; animation: pop .45s ease both; }
       .love-dialog { width: min(94vw, 64rem); max-height: 90vh; padding: 0; overflow: auto; border: 0; border-radius: 1.4rem; color: var(--navy); background: linear-gradient(135deg, #fffaf4 0%, #fae4e0 54%, #f8efd9 100%); box-shadow: 0 2rem 5rem rgba(16, 47, 70, .45); }
       .love-dialog::backdrop { background: rgba(16, 47, 70, .78); backdrop-filter: blur(7px); }
       .love-shell { position: relative; display: grid; grid-template-columns: minmax(15rem, .9fr) minmax(17rem, 1fr); gap: clamp(1rem, 4vw, 3rem); align-items: center; padding: clamp(1.4rem, 5vw, 3.2rem); overflow: hidden; }
@@ -331,7 +329,7 @@
         </section>
 
         <section class="finale" aria-labelledby="finale-title">
-          <div class="reveal"><p class="section-kicker">y todavía falta lo mejor</p><h2 id="finale-title">¿Quieres seguir siendo mi aventura favorita?</h2><p>Yo pongo los planes malos, los besos inesperados y las ganas de irnos lejos. Tú solo dime que sí y seguimos llenando esta cinta.</p><div class="answer-row" role="group" aria-label="Respuesta"><button class="answer" type="button" data-answer="yes">Sí, obvio 🤍</button><button class="answer secondary" type="button" data-answer="always">Siempre contigo</button></div><p class="reveal-message" id="reveal-message" role="status"></p></div>
+          <div class="reveal"><p class="section-kicker">y todavía falta lo mejor</p><h2 id="finale-title">¿Quieres seguir siendo mi aventura favorita?</h2><p>Yo pongo los planes malos, los besos inesperados y las ganas de irnos lejos. Tú solo dime que sí y seguimos llenando esta cinta.</p><div class="answer-row" role="group" aria-label="Respuesta"><button class="answer" type="button" data-answer="yes">Sí, obvio 🤍</button><button class="answer secondary" type="button" data-answer="always">Siempre contigo</button></div></div>
         </section>
       </main>
 
@@ -346,7 +344,6 @@
       const musicButton = document.querySelector('#music-button');
       const musicIcon = document.querySelector('#music-icon');
       const musicLabel = document.querySelector('#music-label');
-      const revealMessage = document.querySelector('#reveal-message');
       const loveDialog = document.querySelector('#love-dialog');
       const loveKicker = document.querySelector('#love-kicker');
       const loveTitle = document.querySelector('#love-title');
@@ -384,33 +381,21 @@
       videos.forEach((video) => videoObserver.observe(video));
 
       const celebrationCopy = {
-        yes: {
-          kicker: 'respuesta correcta 💌',
-          title: '¡Sí, obvio! 💖',
-          message: 'Entonces queda escrito: tú y yo, con muchas vueltas más por delante. Gracias por elegirme para vivirlas contigo. 🥹✨',
-          quote: '“Mi aventura favorita siempre va a ser la que empieza y termina a tu lado.” 🌅❤️',
-          short: 'Entonces queda escrito: tú y yo, con muchas vueltas más por delante. ✨',
-        },
-        always: {
           kicker: 'mi respuesta favorita 🫶🏼',
           title: 'Siempre contigo. 💞',
           message: 'En los días tranquilos, en los planes improvisados y en cada lugar nuevo: quiero seguir encontrándome contigo. 🤍🌎',
           quote: '“No necesito saber el destino si puedo seguir caminando contigo.” 💫',
-          short: 'Siempre contigo, en cada aventura y en cada versión de nosotros. 💞',
-        },
       };
-      const openCelebration = (answer) => {
-          const copy = celebrationCopy[answer] || celebrationCopy.yes;
+      const openCelebration = () => {
+          const copy = celebrationCopy;
           loveKicker.textContent = copy.kicker;
           loveTitle.textContent = copy.title;
           loveMessage.textContent = copy.message;
           loveQuote.textContent = copy.quote;
-          revealMessage.textContent = copy.short;
-          revealMessage.classList.add('is-visible');
           loveDialog.showModal();
           for (let index = 0; index < 18; index += 1) { const heart = document.createElement('span'); heart.className = 'heart'; heart.textContent = ['♥', '✦', '♡', '✨'][index % 4]; heart.style.left = (50 + (Math.random() * 42 - 21)) + '%'; heart.style.top = (58 + (Math.random() * 12 - 6)) + '%'; heart.style.animationDelay = (Math.random() * .45) + 's'; document.body.appendChild(heart); setTimeout(() => heart.remove(), 2200); }
       };
-      document.querySelectorAll('[data-answer]').forEach((button) => button.addEventListener('click', () => openCelebration(button.dataset.answer)));
+      document.querySelectorAll('[data-answer]').forEach((button) => button.addEventListener('click', openCelebration));
       document.querySelector('#love-dialog-close').addEventListener('click', () => loveDialog.close());
       loveDialog.addEventListener('click', (event) => { if (event.target === loveDialog) loveDialog.close(); });
     </script>
